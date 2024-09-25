@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +9,7 @@
 <body>
     <header th:insert="blocks/header :: header"></header>
     <main>
+        <form th:action="@{/login}" method="post">
         <div class="align-center reg-page">
             <div class="reg-limit">
                 <div class="label">
@@ -34,9 +35,10 @@
                     <span>Don't have an account? <span style="color: #06965C;">Sign up</span></span>
                 </div>
             </div>
-            
-            
-        </div>
+
+
+        </div>>
+        </form>
     </main>
 
     <footer th:insert="blocks/footer :: footer"></footer>

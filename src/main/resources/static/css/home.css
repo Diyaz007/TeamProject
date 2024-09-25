@@ -43,7 +43,6 @@ ul {
 
 .align-center {
     align-items: center;
-    text-align: center;
 }
 
 
@@ -262,7 +261,7 @@ select:invalid {
 
 .section-divider {
     border: 1px solid #E5E5E5;
-    margin: 5% 0;
+    margin: 5% auto;
 }
 
 .sort {
@@ -305,8 +304,132 @@ select:invalid {
 
 
 .company-list-el {
+    padding: 0 2% 3% 0;
+    margin-bottom: 3%;
+    border: 1px solid #d1d1d1;
+    max-width: 30%;
+}
+
+.rating {
+    flex-direction: column;
+    gap: 1%;
+}
+
+
+.company-list {
+    max-width: 100%;
+    margin-top: 2%;
+    flex-wrap: wrap;
+}
+
+
+.company-list-el .section-divider {
+    margin: 0 auto 5% auto;
+    width: 80%;
+}
+
+.location {
+    gap: 3%;
+    padding: 3%;
+    margin-left: 5%;
+}
+
+.location h5{
+    padding-top: 3%;
+}
+
+.logo{
+    margin-left: 0;
+}
+
+.company-list-el a{
+    margin: 3% 0 2% 14%;
+}
+
+.show-more {
+    background-color: #F9F9F9;
+    text-align: center;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 1%;
+}
+
+
+
+.moving-services {
+    margin: 5% auto 0.5% auto;
+}
+
+.service-types {
+
+    position: relative;
+    text-align: center;
+    padding-bottom: 2%;
+    justify-content: space-between;
+    gap: 2%;
+}
+
+.service-type {
+    background-color: #EBFAFD;
+    flex-direction: column;
+    justify-content: end;
+    width: 25%;
+    padding: 0 0 0 1%;
+}
+
+.service-types img {
+    justify-self: start;
+    position: absolute;
+    bottom: 30%;
+    padding-left: 2%;
+}
+.service-type h4 {
+    margin-top: 20%;
+}
+
+.locations {
+    background-color: #F9F9F9;
+    border-radius: 5px;
+    padding: 5%;
+}
+
+.text-center{
+    text-align: center;
 
 }
+
+.mover-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.mover-list li {
+    width: 25%;
+    text-align: center;
+    margin: 0.5% 0;
+}
+
+.mover-list a {
+    color: #06965C;
+    font-size: medium;
+}
+
+
+
+
+.reviews {
+    margin: 8% 0;
+    gap: 5%;
+}
+
+
+.reviews a {
+    color: #06965C;
+}
+
+
+
 
 
 .footer-logo {
@@ -324,9 +447,6 @@ select:invalid {
     align-items: center;
 }
 
-.footer-links {
-    /* justify-content: space-between; */
-}
 
 .footer-column {
     width: 33%;
