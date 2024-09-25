@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>A1 Fast Moving</title>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+    <main>
+        <form th:action="@{/login}" method="post">
+        <div class="align-center reg-page">
+            <div class="reg-limit">
+                <div class="label">
+                    <h1>Login</h1>
+                </div>
+                <div class="registration">
+                    <div class="reg">
+                        <input type="text" placeholder="Username or email address">
+                    </div>
+                    <div class="reg">
+                        <span>Password <span style="color: red;">*</span></span>
+                        <br><br>
+                        <input type="password" placeholder="Your password">
+                    </div>
+                </div>
+                <div class="privacy d-flex">
+                    <input type="checkbox" name="remember me" id="remember"> <span style="color: #06965C;">Remember me</span>
+                </div>
+
+                <div class="signup d-flex flex-column">
+                    <button type="submit">Log in</button>
+                    <span style="color: #06965C;">Recover password</span>
+                    <span>Don't have an account? <span style="color: #06965C;">Sign up</span></span>
+                </div>
+            </div>
+
+
+        </div>>
+        </form>
+    </main>
+
+    <footer th:insert="blocks/footer :: footer"></footer>
+</body>

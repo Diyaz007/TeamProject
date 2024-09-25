@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+
+    <title>A1 Fast Moving</title>
+</head>
+<body>
+<header>
+    <div class="wrapper-top">
+        <div class="limit">
+            <div class="d-flex header-top inf">
+                <p>Best California Moving Companies</p>
+                <p>Any questions? <a href="#">Contact us</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="limit">
+            <div class="d-flex ">
+                <div class="header-logo">
+                    <img src="/images/logo.svg" alt="">
+                </div>
+                <div class="header-nav">
+                    <ul class="d-flex nav-flex">
+                        <li>
+                            <a href="#" id="logo-text">A1 FAST MOVING</a>
+                        </li>
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="#">Location</a>
+                        </li>
+                        <li>
+                            <a href="#">Services</a>
+                        </li>
+                        <li>
+                            <a href="#">Tips & Tricks</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-auth">
+                    <div class="d-flex auth-container">
+                        <div class="add-company">
+                            <span><span style="color: green;">+ </span>Add Company</span>
+                        </div>
+                        <div class="get-quote">
+                            Get Quote
+                        </div>
+                        <div class="searchbar">
+                            <img src="/images/searchbar.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+<main>
+    <section class="search">
+        <img src="/images/search.svg" alt="">
+        <div class="overlay"></div>
+        <div class="selection-text">
+            <h1>FIND BEST MOVING COMPANIES IN CALIFORNIA</h1>
+        </div>
+        <div class="selection d-flex limit">
+            <input type="text" placeholder="What are you looking for" required>
+            <select name="category" id="category" required>
+                <option value="" disabled selected hidden>Select a category</option>
+                <option value="goods">Goods</option>
+            </select>
+            <select name="location" id="location" required>
+                <option value="" disabled selected hidden>Choose location</option>
+                <option value="bishkek">Bishkek</option>
+            </select>
+            <button type="submit" id="search-submit-button">Search Moving Companies</button>
+        </div>
+    </section>
+
+    <section class="statistics">
+        <div class="limit">
+            <div class="flex-between d-flex">
+                <div class="stat-item">
+                    <h3>13</h3>
+                    <p>LOCATIONS</p>
+                </div>
+                <div class="divider">/</div>
+                <div class="stat-item">
+                    <h3>56</h3>
+                    <p>MOVING COMPANIES</p>
+                </div>
+                <div class="divider">/</div>
+                <div class="stat-item">
+                    <h3>274</h3>
+                    <p>REVIEWS</p>
+                </div>
+                <div class="divider">/</div>
+                <div class="stat-item">
+                    <h3>15.6k</h3>
+                    <p>SATISFIED CUSTOMERS</p>
+                </div>
+            </div>
+            <div class="section-divider"></div>
+        </div>
+    </section>
+
+    <section class="top-list">
+        <div class="limit">
+            <div class="sort d-flex">
+                <div class="top-list-header d-flex">
+                    <h2>Top Moving Companies</h2>
+                    <a href="#">See all</a>
+                </div>
+                <div class="sort-select d-flex">
+                    <select name="service" id="service" required>
+                        <option value="" disabled selected hidden>Service</option>
+                        <option value="move">move</option>
+                    </select>
+                    <select name="sort-by" id="sort-by" required>
+                        <option value="" disabled selected hidden>Sort by</option>
+                        <option value="name">Name</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="company-list d-flex flex-between">
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+                <div class="company-list-el">
+                    <div class="logo align-center d-flex">
+                        <img src="/images/california-movers-logo.svg" alt="">
+                        <div class="rating d-flex ">
+                            <h3>California Movers USA</h3>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+                    <div class="location d-flex">
+                        <img src="/images/location marker.svg" alt="">
+                        <h5>Ontario, Los Angeles, San Diego, San Jose, Oakland, San Francisco</h5>
+                    </div>
+                    <div class="location d-flex">
+                        <img src="/images/Call.svg" alt="">
+                        <p>(415) 579-2747</p>
+                    </div>
+                    <div class="d-flex">
+                        <a href="#" style="color: #06965C;">Local movers</a>
+                        <a href="#" style="color: #06965C;">Services +5</a>
+                    </div>
+                </div>
+            </div>
+            <div class="show-more">
+                <p>Show more</p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="moving-services">
+        <div class="limit">
+            <div >
+                <h2>Moving Services</h2>
+                <br><br><br><br>
+            </div>
+
+
+            <div class="service-types d-flex">
+                <div class="service-type d-flex">
+                    <img src="/images/local-movers.svg" alt="">
+                    <br><br><br><br><br><br><br>
+                    <h4>Local Movers</h4>
+                    <h6>(19) listings</h6>
+                </div>
+                <div class="service-type d-flex">
+                    <img src="/images/local-movers.svg" alt="">
+                    <br><br><br><br><br><br><br>
+                    <h4>Local Movers</h4>
+                    <h6>(19) listings</h6>
+                </div>
+                <div class="service-type d-flex">
+                    <img src="/images/local-movers.svg" alt="">
+                    <br><br><br><br><br><br><br>
+                    <h4>Local Movers</h4>
+                    <h6>(19) listings</h6>
+                </div>
+                <div class="service-type d-flex">
+                    <img src="/images/local-movers.svg" alt="">
+                    <br><br><br><br><br><br><br>
+                    <h4>Local Movers</h4>
+                    <h6>(19) listings</h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="limit">
+            <div class="locations">
+
+                <div class="text-center">
+                    <h2>Find Your Movers in Locations</h2>
+                    <br><br>
+                </div>
+                <div class="d-flex">
+                    <ul class="mover-list">
+                        <li><a href="#">San Francisco</a> (17)</li>
+                        <li><a href="#">Oakland</a>(14)</li>
+                        <li><a href="#">San Jose</a>(15)</li>
+                        <li><a href="#">San Diego</a>(12)</li>
+                        <li><a href="#">Los Angeles</a>(13)</li>
+                        <li><a href="#">Ontario</a>(10)</li>
+                        <li><a href="#">San Francisco</a> (17)</li>
+                        <li><a href="#">Oakland</a>(14)</li>
+                        <li><a href="#">San Jose</a>(15)</li>
+                        <li><a href="#">San Diego</a>(12)</li>
+                        <li><a href="#">Los Angeles</a>(13)</li>
+                        <li><a href="#">Ontario</a>(10)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="limit">
+        <div class=" reviews d-flex align-center">
+            <h2>Latest Reviews</h2>
+            <a href="#">See all</a>
+        </div>
+        <div class="review-list d-flex">
+            <div class="review-list-el">
+                <div class="review-logo d-flex">
+                    <img src="/images/review-logo.svg" alt="">
+                    <div class="rating d-flex ">
+                        <h3>California Movers USA</h3>
+                        <span>4.9</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <section>
+
+    </section>
+    <section>
+
+    </section>
+</main>
+<footer>
+    <div class="nav-bottom limit">
+        <div class="flex-between d-flex">
+            <div class="footer-column d-flex flex-column">
+                <div class="footer-logo">
+                    <img src="/images/logo.svg" alt="">
+                    <a href="" id="logo-text">A1 FAST MOVING</a>
+                </div>
+
+                <ul class="d-flex footer-nav">
+
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Location</a>
+                    </li>
+                    <li>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <a href="#">Tips & Tricks</a>
+                    </li>
+                </ul>
+                <div class="d-flex footer-nav">
+                    <div class="add-company">
+                        <span><span style="color: green;">+ </span>Add Company</span>
+                    </div>
+                    <div class="get-quote">
+                        Get Quote
+                    </div>
+                    <div class="searchbar">
+                        <img src="/images/searchbar.svg" alt="">
+                    </div>
+
+                </div>
+                <div class="footer-bottom d-flex">
+                    <p>2005-2020 © A1 Fast Moving - Top Rated California Moving Companies</p>
+                </div>
+
+            </div>
+            <div class="footer-column">
+                <h3>Moving Services</h3>
+                <ul>
+                    <li><a href="#">Local Movers</a></li>
+                    <li><a href="#">Long Distance</a></li>
+                    <li><a href="#">Movers</a></li>
+                    <li><a href="#">Office Movers</a></li>
+                    <li><a href="#">Piano Movers</a></li>
+                    <li><a href="#">State to State Movers</a></li>
+                    <li><a href="#">Storages</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Locations</h3>
+                <ul>
+                    <li><a href="#">San Francisco</a></li>
+                    <li><a href="#">Oakland</a></li>
+                    <li><a href="#">San Jose</a></li>
+                    <li><a href="#">San Diego</a></li>
+                    <li><a href="#">Los Angeles</a></li>
+                    <li><a href="#">Ontario</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</footer>
+</body>
+</html>
