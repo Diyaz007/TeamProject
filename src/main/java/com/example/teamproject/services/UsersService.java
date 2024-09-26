@@ -34,7 +34,7 @@ public class UsersService {
     }
 
     public Users findByUserName(String username) {
-        return usersRepository.findByUsername(username);
+        return usersRepository.findByUsernameAndActive(username,true);
     }
 
     public void update(Users users) {
@@ -42,7 +42,7 @@ public class UsersService {
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Users user = this.usersRepository.findFirstByUsername(username);
+        Users user = this.usersRepository.findByUsernameAndActive(username,true);
         if (user == null) {
             throw new UsernameNotFoundException("User not found");
         }

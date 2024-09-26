@@ -13,33 +13,23 @@ public class UsersController {
     @Autowired
     private UsersService userService;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @GetMapping(value = "/")
+    public String home() {
+        return "home";
+    }
+
+    @GetMapping(value = "/mainUser")
+    public String mainUser() {
+        return "mainUser";
+    }
+
+    @GetMapping("/login")
     public String login() {
-        return "main";
+        return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView loginPage(@RequestParam(value = "error", required = false) String error,
-                                  @RequestParam(value = "logout", required = false) String logout) {
 
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("error", "Почта или пароль неверны");
-            model.setViewName("/login");
-        }
-        if (logout != null) {
-            model.addObject("logout", "Logged out successfully.");
-            model.setViewName("/login");
-        }
-        return model;
-    }
-
-    @RequestMapping(value = "/userMain", method = RequestMethod.GET)
-    public String hello() {
-        return "userMain";
-    }
-
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @GetMapping(value = "/register")
     public ModelAndView register() {
         ModelAndView modelAndView = new ModelAndView("registration");
         modelAndView.addObject("user", new Users());
@@ -47,19 +37,13 @@ public class UsersController {
     }
 
 
-    @PostMapping(value = "/registration")
+    @PostMapping(value = "/register")
     public String registration(@ModelAttribute(name = "user") Users user) {
         try {
-            ModelAndView model = new ModelAndView();
             this.userService.save(user);
             return "login";
         } catch (Exception e) {
             return "registration";
         }
-    }
-
-    @RequestMapping(value = "/adminMain", method = RequestMethod.GET)
-    public String adminMain() {
-        return "adminMain";
     }
 }

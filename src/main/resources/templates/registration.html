@@ -7,49 +7,66 @@
     <title>A1 Fast Moving</title>
 </head>
 <body>
-<header th:insert="blocks/header :: header"> </header>
+<header th:insert="blocks/header :: header"></header>
 
 <main>
-    <form th:action="@{/registration}" method="post">
-        <div class="align-center reg-page">
-            <div class="reg-limit">
-                <form>
-                    <div class="label">
-                        <h1>Registration</h1>
-                    </div>
-                    <div class="registration">
-                        <div class="reg">
-                            <label> </label>
-                            <br><br>
-                            <input th:type="text" placeholder="Enter name">
-                        </div>
-                        <div class="reg">
-                            <span>E-mail <span style="color: red;">*</span></span>
-                            <br><br>
-                            <input type="email" placeholder="example@gmail.com">
-                        </div>
-                        <div class="reg">
-                            <span>Password <span style="color: red;">*</span></span>
-                            <br><br>
-                            <input type="password" placeholder="Create password">
-                        </div>
-                    </div>
-                    <div class="privacy d-flex">
-                        <input type="checkbox" name="privacy" id="privacy"> <span>I agree to the <span style="color: red;">privacy and policy</span></span>
-                        <input type="checkbox" name="terms" id="terms"> <span>I agree with all <span style="color: red;">Terms & Conditions</span></span>
-                    </div>
+    <!-- Error message -->
+    <div hidden th:if="${param.error} != null">
+        Данный логин уже используется
+    </div>
 
-                    <div class="signup d-flex flex-column">
-                        <button type="submit">Sign up</button>
-                        <span>Alrerady have an account? <span style="color: #06965C;">Please login Here</span></span>
-                    </div>
-                </form>
+    <!-- Success message -->
+    <div th:if="${param.success}">
+        <div class="alert alert-info">You've successfully registered to our awesome app!</div>
+    </div>
 
+    <div class="align-center reg-page">
+        <div class="reg-limit">
+            <div class="label">
+                <h1>Registration</h1>
             </div>
+
+            <!-- Form for user registration -->
+            <form th:action="@{/register}" method="post" th:object="${user}">
+                <div class="registration">
+                    <!-- Username field -->
+                    <div class="reg">
+                        <label class="form-label" for="form3Example1cg">Login</label>
+                        <input th:field="*{username}" type="text" maxlength="20" autofocus required
+                               id="form3Example1cg" class="form-control form-control-lg"/>
+                    </div>
+
+                    <!-- Email field -->
+                    <div class="reg">
+                        <label >E-mail <span style="color: red;">*</span></label>
+                        <br><br>
+                        <input th:field="*{email}" type="email" placeholder="example@gmail.com" required/>
+                    </div>
+
+                    <!-- Password field -->
+                    <div class="reg">
+                        <label >Password <span style="color: red;">*</span></label>
+                        <br><br>
+                        <input th:field="*{password}" type="password" placeholder="Create password" minlength="8" maxlength="30" required/>
+                    </div>
+                </div>
+
+                <!-- Privacy and terms checkboxes -->
+                <div class="privacy d-flex">
+                    <label><input type="checkbox" name="privacy" id="privacy" required> I agree to the <span style="color: red;">privacy and policy</span></label>
+                    <label><input type="checkbox" name="terms" id="terms" required> I agree with all <span style="color: red;">Terms & Conditions</span></label>
+                </div>
+
+                <!-- Sign up button -->
+                <div class="signup d-flex flex-column">
+                    <button type="submit">Sign up</button>
+                    <span>Already have an account? <a th:href="@{/login}" style="color: #06965C;">Please login Here</a></span>
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </main>
 
-
-    <footer th:insert="blocks/footer :: footer"> </footer>
+<footer th:insert="blocks/footer :: footer"></footer>
 </body>
+</html>

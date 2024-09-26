@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface UsersRepository extends JpaRepository<Users, Long> {
     Users findFirstByUsername(String username);
 
-    Users findByUsername(String username);
+    Users findByUsernameAndActive(String username,boolean active);
 }
