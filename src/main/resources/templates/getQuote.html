@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>A1 Fast Moving</title>
+</head>
+<body>
+    <header th:insert="blocks/header :: header"></header>
+
+    <main>
+        <div class="quote d-flex">
+
+            <div class="quote-limit  text-center">
+                <h2>Get Quote</h2>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                
+                <form class="quote-form  d-flex" method="post">
+                    <div class="form-group">
+                        <label for="moving-from">Moving from</label>
+                        <input type="text" id="moving-from" placeholder="Street Address or Zip Code">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="moving-to">Moving to</label>
+                        <input type="text" id="moving-to" placeholder="Street Address or Zip Code">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="email">E-mail address</label>
+                        <input type="email" id="email" placeholder="example@gmail.com">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="date">Date of move</label>
+                        <input type="text" id="date" placeholder="00.00.0000">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="What's your name?">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="tel" id="phone" placeholder="+1 (***) ***-****">
+                    </div>
+        
+                    <div class="size-of-move text-center ">
+                        <label>Size of move</label>
+                        <div class="radio-group">
+                            <input type="radio" id="studio" name="size" value="studio">
+                            <label for="studio">Studio</label>
+        
+                            <input type="radio" id="two-bedroom" name="size" value="2-bedroom" checked>
+                            <label for="two-bedroom">2-bedroom</label>
+        
+                            <input type="radio" id="three-bedroom" name="size" value="3-bedroom">
+                            <label for="three-bedroom">3-bedroom</label>
+        
+                            <input type="radio" id="office" name="size" value="office">
+                            <label for="office">Office</label>
+        
+                            <input type="radio" id="other" name="size" value="other">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+        
+                    <button type="submit">Get a Quote</button>
+                </form>
+            </div>
+        </div>
+    
+    </main>
+
+
+    <footer th:insert="blocks/footer :: footer"></footer>
+</body>

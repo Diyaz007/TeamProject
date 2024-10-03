@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>A1 Fast Moving</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+    <main>
+        <div class="quote d-flex">
+
+            <div class="quote-limit  text-center">
+                <h2>Add Company</h2>
+                <p>Your email address will not be published. Required fields are marked *</p>
+                
+                <form class="quote-form  d-flex" method="post">
+                    <div class="form-group">
+                        <label for="company-name">Company name</label>
+                        <input type="text" id="company-name" placeholder="Company name">
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="company-phone-number">Phone number</label>
+                        <input type="tel" id="company-phone-number" placeholder="+966 (***) *** ***">
+                    </div>
+        
+                    <div class="form-group" id="address">
+                        <label for="company-address">Address</label>
+                        <input type="text" id="company-address" placeholder="Company address">
+                    </div>
+
+                    
+                    <textarea name="company-info" id="company-info" placeholder="Enter company info" rows="10" cols="10"></textarea>
+                    
+
+                    
+
+
+                    <div class="img-selector d-flex">
+                        <div class="form-group">
+                            <label for="company-img">Company logo</label>
+                            <input type="file" accept="image/*" id="company-img">
+                        </div>
+                        <div class="form-group">
+                            <label for="company-img">Date of move</label>
+                            <input type="file" accept="image/*" id="company-img">
+                        </div>
+                        <div class="form-group">
+                            <label for="company-img">Date of move</label>
+                            <input type="file" accept="image/*" id="company-img">
+                        </div>
+
+                    </div>
+        
+        
+        
+                    
+        
+                    <button type="submit">Add Company</button>
+                </form>
+            </div>
+        </div>
+    
+    </main>
+
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>

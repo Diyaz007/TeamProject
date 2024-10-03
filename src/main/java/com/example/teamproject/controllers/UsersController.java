@@ -36,6 +36,12 @@ public class UsersController {
         return modelAndView;
     }
 
+    @GetMapping(value = "addCompany")
+    public String addCompany() {return "addCompany";}
+
+    @GetMapping(value = "getQuote")
+    public String getQuote() {return "getQuote";}
+
 
     @PostMapping(value = "/register")
     public String registration(@ModelAttribute(name = "user") Users user) {
