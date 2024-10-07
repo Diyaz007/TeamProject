@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/home.css">
+  <title>A1 Fast Moving</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<main>
+  <!-- Error message -->
+  <div hidden th:if="${param.error} != null">
+    Error! :(
+  </div>
+
+  <div class="align-center reg-page">
+    <div class="reg-limit">
+      <div class="label">
+        <h1>Update Page</h1>
+      </div>
+
+      <!-- Form for user registration -->
+      <form th:action="@{/updateMainPage}" method="post" th:object="${siteView}">
+        <div class="registration">
+          <!-- Username field -->
+          <div class="reg">
+            <label class="form-label" for="form3Example1cg">Main Text:</label>
+            <input th:field="*{mainText}" th:value="${siteView.getMainText()}" type="text" maxlength="50" autofocus required
+                   id="form3Example1cg" class="form-control form-control-lg"/>
+          </div>
+
+          <!-- Email field -->
+          <div class="reg">
+            <label >Locations <span style="color: red;">*</span></label>
+            <br><br>
+            <input th:field="*{locationsStat}" th:value="${siteView.getLocationsStat()}" required/>
+          </div>
+
+          <!-- Password field -->
+          <div class="reg">
+            <label >Moving Company <span style="color: red;">*</span></label>
+            <br><br>
+            <input th:field="*{movingCompanyStat}" th:value="${siteView.getMovingCompanyStat()}" maxlength="10" required/>
+          </div>
+
+          <div class="reg">
+            <label >Reviews <span style="color: red;">*</span></label>
+            <br><br>
+            <input th:field="*{reviewsStat}" th:value="${siteView.getReviewsStat()}"   maxlength="8" required/>
+          </div>
+
+          <div class="reg">
+            <label >Satisfied Customers <span style="color: red;">*</span></label>
+            <br><br>
+            <input th:field="*{satisfiedCustomersStat}" th:value="${siteView.getSatisfiedCustomersStat()}"  maxlength="10" required/>
+          </div>
+        </div>
+        <!-- Sign up button -->
+        <div class="signup d-flex flex-column">
+          <button type="submit">Save</button>
+          <span>Cancel?<a th:href="@{/}" style="color: #06965C;">Tap Here!</a></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

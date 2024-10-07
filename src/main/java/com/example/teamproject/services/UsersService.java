@@ -29,7 +29,6 @@ public class UsersService {
         user.setRole(Roles.USER);
         user.setActive(true);
         user.setCreatedDate(new Date());
-
         return usersRepository.save(user);
     }
 

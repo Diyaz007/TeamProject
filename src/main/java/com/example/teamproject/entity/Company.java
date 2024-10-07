@@ -5,6 +5,7 @@ import com.example.teamproject.enums.States;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 
 import java.time.LocalDateTime;
@@ -36,6 +37,7 @@ public class Company {
     private String phoneNumber;
 
     @Column(name = "ADDRESS")
+    @Enumerated(EnumType.STRING)
     private States address;
 
     @Lob
@@ -61,6 +63,7 @@ public class Company {
         image.setCompany(this);
         images.add(image);
     }
+
 
 }
 

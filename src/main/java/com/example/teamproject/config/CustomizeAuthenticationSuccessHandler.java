@@ -25,6 +25,6 @@ public class CustomizeAuthenticationSuccessHandler implements AuthenticationSucc
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        response.sendRedirect("/mainUser");
+        response.sendRedirect("/");
     }
 }

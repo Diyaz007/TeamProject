@@ -1,5 +1,6 @@
 package com.example.teamproject.controllers;
 
+import com.example.teamproject.entity.Company;
 import com.example.teamproject.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,12 +16,7 @@ public class UsersController {
 
     @GetMapping(value = "/")
     public String home() {
-        return "home";
-    }
-
-    @GetMapping(value = "/mainUser")
-    public String mainUser() {
-        return "mainUser";
+        return "redirect:/get_all_companies";
     }
 
     @GetMapping("/login")
@@ -35,12 +31,6 @@ public class UsersController {
         modelAndView.addObject("user", new Users());
         return modelAndView;
     }
-
-    @GetMapping(value = "addCompany")
-    public String addCompany() {return "addCompany";}
-
-    @GetMapping(value = "getQuote")
-    public String getQuote() {return "getQuote";}
 
 
     @PostMapping(value = "/register")

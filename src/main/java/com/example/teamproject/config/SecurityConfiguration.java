@@ -1,6 +1,7 @@
 package com.example.teamproject.config;
 
 
+import com.example.teamproject.controllers.UsersController;
 import com.example.teamproject.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,17 +14,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration{
 
     private final UsersService userService;
+    private final UsersController usersController;
     private final AuthenticationSuccessHandler customizeAuthenticationSuccessHandler;
 
     @Autowired
-    public SecurityConfiguration(UsersService userService , AuthenticationSuccessHandler customizeAuthenticationSuccessHandler) {
+    public SecurityConfiguration(UsersService userService, UsersController usersController, AuthenticationSuccessHandler customizeAuthenticationSuccessHandler) {
         this.userService = userService;
+        this.usersController = usersController;
         this.customizeAuthenticationSuccessHandler = customizeAuthenticationSuccessHandler;
     }
 
@@ -49,8 +53,9 @@ public class SecurityConfiguration{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/","/register", "/login", "/css/**", "/js/**","/img/**","/templates/**").permitAll()
-                        .requestMatchers("/mainUser","/company/create").authenticated()
+                        .requestMatchers("/","/register", "/login", "/css/**", "/js/**","/img/**","/templates/**","/logout","/get_all_companies","/images/{id}","mailto:diyaz.turganaliev@alatoo.edu.kg").permitAll()
+                        .requestMatchers("/updateMainPage").hasAuthority("ADMIN")
+                        .requestMatchers("/mainUser","/add_company","/save_company").authenticated()
                 )
                 .formLogin(form -> form
                         .loginPage("/login")
@@ -60,9 +65,9 @@ public class SecurityConfiguration{
                         .passwordParameter("password")
                         .permitAll()
                 )
-                .logout(logout -> logout
+                .logout(logoutConfigurer -> logoutConfigurer
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout=true")
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 );
 

@@ -75,7 +75,7 @@ public class CompanyService {
             image3 = toImageEntity(file3);
             company.addImageToCompany(image3);
         }
-        Double averageRating = reviewRepository.findAverageRatingByCompanyId(Long.valueOf(company.getId()));
+        Double averageRating = 0.0;
         company.setRating(averageRating);
 
         company.setActive(true);
@@ -99,6 +99,9 @@ public class CompanyService {
         image.setSize(file.getSize());
         image.setBytes(file.getBytes());
         return image;
+    }
+    public List<Company> getAllActiveCompanies() {
+        return companyRepository.findCompaniesByActiveTrue();
     }
 
     public void deleteCompany(Long id) {

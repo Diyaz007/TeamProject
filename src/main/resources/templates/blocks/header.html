@@ -1,12 +1,16 @@
-<div th:fragment="header">
+<div th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
   <header>
     <div class="wrapper-top">
       <div class="limit">
         <div class="d-flex header-top info">
           <p>Best California Moving Companies</p>
+          <div th:if="${#authorization.expression('isAuthenticated()')}">
+            <p>WELCOME, <span th:text="${#authentication.name}">User</span>!</p>
+          </div>
           <div class="contact">
             <p class="questions">Any questions?</p>
-            <a href="#">Contact us</a>
+            <a href="mailto:diyaz.turganaliev@alatoo.edu.kg?subject=Moving%20Service%20&body=Dear%20Moving%20Company%20Team,%0D%0A%0D%0AI%20hope%20this%20message%20finds%20you%20well.%20I%20am%20interested%20in%20learning%20more%20about%20your%20moving%20services.%0D%0A%0D%0AHere%20are%20some%20details%20about%20my%20move:%0D%0A-%20Preferred%20Moving%20Date:%0D%0A-%20Current%20Address:%0D%0A-%20Destination%20Address:%0D%0A%0D%0AAdditionally,%20please%20let%20me%20know%20if%20there%20are%20any%20packing%20or%20storage%20options%20available.%20I%20would%20appreciate%20your%20expert%20advice%20on%20how%20to%20make%20this%20move%20as%20smooth%20as%20possible.%0D%0A%0D%0AThank%20you%20in%20advance%20for%20your%20time%20and%20assistance.%20I%20look%20forward%20to%20hearing%20from%20you%20soon.%0D%0A%0D%0ABest%20regards,%0D%0A%5BYour%20Name%5D">
+              Contact Us</a>
           </div>
         </div>
       </div>
@@ -16,31 +20,43 @@
         <div class="d-flex ">
           <div class="header-logo d-flex">
             <img src="images/logo.svg" alt="">
-            <a href="#" id="logo-text">A1 FAST MOVING</a>
+            <a href="/" id="logo-text">D&E FAST MOVING</a>
           </div>
           <div class="header-nav">
             <ul class="d-flex nav-flex">
               <li>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="#">Location</a>
+                <a href="#locations">Location</a>
               </li>
               <li>
-                <a href="#">Services</a>
+                <a href="#tipsAndTricks">Tips & Tricks</a>
               </li>
               <li>
-                <a href="#">Tips & Tricks</a>
+                <a href="#services">Services</a>
+              </li>
+              <li sec:authorize="hasAuthority('ADMIN')">
+                <a href="/updateMainPage">Update Page</a>
               </li>
             </ul>
           </div>
           <div class="header-auth">
             <div class="d-flex auth-container">
-              <div class="log-but">
-                <a href="#">Log in</a>
+              <div th:if="${#authorization.expression('isAuthenticated()')}">
+                <div class="log-but">
+                  <form th:action="@{/logout}" method="post">
+                    <button class="logout" type="submit">Logout</button>
+                  </form>
+                </div>
+              </div>
+              <div th:if="${#authorization.expression('isAnonymous()')}">
+                <div class="log-but">
+                  <a href="/login">Log in</a>
+                </div>
               </div>
               <div class="add-company">
-                <a href="#"><span style="color: #06965C;">+ </span>Add Company</a>
+                <a href="/add_company"><span style="color: #06965C;">+ </span>Add Company</a>
               </div>
               <div class="get-quote">
                 <a href="#">Get quote</a>
