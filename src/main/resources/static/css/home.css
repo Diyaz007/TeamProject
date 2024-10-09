@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Noto Sans';
     src: url('../fonts/NotoSans-Light.woff2') format('woff2'),
-        url('../fonts/NotoSans-Light.woff') format('woff');
+    url('../fonts/NotoSans-Light.woff') format('woff');
     font-weight: 300;
     font-style: normal;
     font-display: swap;
@@ -13,7 +13,7 @@
 }
 
 body {
-    font-family: 'Noto Sans', serif;
+    font-family: 'Noto Sans';
     background-color: white;
     font-size: 1rem;
     color: black;
@@ -41,12 +41,14 @@ section.search {
     background-image: url("../img/search.png");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: right center;
     background-position: 60% center;
     margin: 0;
 }
 
 .see-all {
     color: #06965C;
+    font-size: 1rem;
 }
 
 .align-center {
@@ -126,15 +128,9 @@ a:hover {
     margin-right: 1.25rem;
 }
 
-.logout{
-    background-color: transparent;
-    border: none;
-    font-size: 1rem;
-}
 
 
-
-@media (min-width: 1200px) and (max-width:1930px){
+@media (min-width: 1201px) and (max-width:1930px){
     .burger-menu {
         display: none;
     }
@@ -144,13 +140,30 @@ a:hover {
 
 @media (max-width: 1930px){
 
-/* ====================================================================== */
+    /* ====================================================================== */
 
+    .company-list {
+        display: flex;
+        flex-wrap: wrap; /* Позволяет переносить карточки на новую строку */
+        justify-content: space-between; /* Распределяет карточки по ширине */
+        gap: 20px; /* Отступы между карточками */
+    }
 
+    .company-list-el {
+        flex: 0 1 calc(33.333% - 20px); /* Три карточки в ряд, с учетом отступов */
+        box-sizing: border-box;
+        padding: 20px;
+        background-color: #f9f9f9; /* Цвет фона карточки */
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 3%;
+        border: 1px solid #d1d1d1;
+        max-width: 30%;
+    }
     .contact a {
         color: #06965C;
     }
-        
+
     .wrapper-top {
         margin: 0;
         padding: 10px 0;
@@ -164,7 +177,7 @@ a:hover {
     }
 
     .wrapper {
-        padding-bottom: 10px;
+        padding: 10px 0;
         height: 40px;
         padding-top: 20px;
     }
@@ -251,7 +264,7 @@ a:hover {
     }
 
 
-/* ======================================================================= */
+    /* ======================================================================= */
 
     .search-wrapper {
         height: 10%;
@@ -275,7 +288,7 @@ a:hover {
         z-index: 3;
         margin: 2% auto;
     }
-    
+
 
     .selection> * {
         font-size: 18px;
@@ -299,7 +312,7 @@ a:hover {
         font-weight: 200;
     }
 
-/* ======================================================================== */
+    /* ======================================================================== */
 
     .statistics {
         margin: 3% auto;
@@ -336,13 +349,12 @@ a:hover {
         margin: 5% auto;
     }
 
-/* ====================================================================== */
+    /* ====================================================================== */
 
     .sort {
         max-width: 100%;
         height: 100%;
         justify-content: space-between;
-        margin-bottom: 20px;
     }
 
     .sort a {
@@ -373,20 +385,9 @@ a:hover {
         box-shadow: none;
     }
 
-    .company-list {
-        display: flex;
-        flex-wrap: wrap; /* Позволяет переносить карточки на новую строку */
-        justify-content: space-between; /* Распределяет карточки по ширине */
-        gap: 20px; /* Отступы между карточками */
-    }
 
     .company-list-el {
-        flex: 0 1 calc(33.333% - 20px); /* Три карточки в ряд, с учетом отступов */
-        box-sizing: border-box;
-        padding: 20px;
-        background-color: #f9f9f9; /* Цвет фона карточки */
-        border-radius: 10px;
-        text-align: center;
+        padding: 1% 0% 3% 2%;
         margin-bottom: 3%;
         border: 1px solid #d1d1d1;
         max-width: 30%;
@@ -394,8 +395,21 @@ a:hover {
 
     .rating {
         flex-direction: column;
-        gap: 10%;
-        margin-left: 15px;
+        gap: 1%;
+    }
+
+
+    .company-list {
+        max-width: 100%;
+        margin-top: 2%;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 50px;
+    }
+
+    .company-list-el .section-divider {
+        margin: 0 auto 5% auto;
+        width: 80%;
     }
 
     .location {
@@ -413,6 +427,10 @@ a:hover {
         margin-left: 0;
     }
 
+    .logo img{
+        margin-right: 9%;
+    }
+
     .company-list-el a {
         margin: 3% 0 2% 14%;
     }
@@ -425,7 +443,7 @@ a:hover {
         padding: 1%;
     }
 
-/* ====================================================================== */
+    /* ====================================================================== */
 
 
     .moving-services {
@@ -454,7 +472,7 @@ a:hover {
         margin-top: 20%;
     }
 
-/* ===================================================================== */
+    /* ===================================================================== */
 
 
     .locations {
@@ -480,7 +498,7 @@ a:hover {
         font-size: medium;
     }
 
-/* ===================================================================== */
+    /* ===================================================================== */
 
 
     section.reviews {
@@ -544,7 +562,7 @@ a:hover {
         border-radius: 0.3rem;
     }
 
-/* ===================================================================== */
+    /* ===================================================================== */
 
     .card {
         background-color: #F9F9F9;
@@ -601,7 +619,7 @@ a:hover {
         text-decoration: underline;
     }
 
-/* ===================================================================== */
+    /* ===================================================================== */
 
 
     .section-header-label {
@@ -661,7 +679,7 @@ a:hover {
     }
 
 
-/* ==================================================================== */
+    /* ==================================================================== */
 
 
     .search-section {
@@ -686,11 +704,11 @@ a:hover {
         padding: 1%;
     }
 
-/* ====================================================================== */
+    /* ====================================================================== */
 
     .columns {
         max-width: 100%;
-        
+
     }
 
     .footer-logo {
@@ -765,10 +783,22 @@ a:hover {
         align-items: center;
         gap: 50px;
     }
+
+    .company-list {
+        justify-content: center;
+        gap: 5%;
+    }
+
+    .company-list-el {
+        max-width: 50%;
+    }
 }
 
 @media (max-width: 1300px){
-    
+    .company-list-el {
+        max-width: 45%;
+    }
+
     .section-header-label {
         font-size: 1.7rem;
     }
@@ -776,8 +806,6 @@ a:hover {
     .rating.d-flex h3 {
         font-size: 18px;
     }
-    
-    
 }
 
 @media (max-width: 1200px){
@@ -812,18 +840,144 @@ a:hover {
         font-size: 13px;
     }
 
+    .service-types{
+        justify-content: space-around;
+    }
+
+    .service-type {
+        width: 35%;
+    }
+
     .columns {
         justify-content: center;
     }
     .bottom-nav {
         justify-content: center;
     }
-    
+
     .footer-logo {
+        margin-left: 10%;
+        text-wrap: nowrap;
+    }
+}
+
+@media (max-width:1100px) {
+    .stat-items .divider:nth-child(4){
+        display: none
+    }
+
+
+    .stat-item:nth-child(3), .stat-item:nth-child(7){
+        justify-content: end;
+    }
+
+    .stat-items .divider {
+        margin-left: -3%;
+    }
+
+    .stat-items{
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .stat-item {
+        width: 35%;
+        justify-content: flex-start;
+    }
+
+    .section-header-label {
+        font-size: 20px;
+    }
+
+    .see-all {
+        font-size: 13px;
+    }
+
+    .sort-select > * {
+        font-size: 12px;
+        height: 2rem;
+    }
+
+    .selection {
+        height: 80%;
+    }
+
+    .selection > * {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 960px){
+
+    .company-list-el{
+        width: 40px;
+        margin: 0;
+    }
+
+    .company-list-el img {
+        margin: 0;
+    }
+
+    .logo{
+        justify-content: space-between;
+        padding-right: 1%;
+    }
+
+    .location .d-flex{
+        margin: 0;
+        padding: 0;
+        justify-content: space-between;
+    }
+
+    .location a{
+        margin: 0;
+        padding: 0;
+    }
+
+    .search-wrapper {
+        margin-bottom: 33%;
+    }
+
+    .selection {
+        flex-direction: column;
+        max-width: 500px;
+        height: fit-content;
+    }
+
+    .selection > * {
+        padding: 2%;
+        margin-bottom: 1%;
+    }
+
+    .selection input {
+        width: 96%;
+    }
+
+    .search {
+        padding-bottom: 10%;
+    }
+
+    .search-section .selection {
+        align-items: center;
+        width: fit-content;
         margin-left: 10%;
     }
 
-    
+    .selection > *{
+        height: 50px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .search-section .selection input{
+    }
+
+    .card:not(:first-child){
+        display: none;
+    }
+
+    .card{
+        max-width: 100%;
+    }
 }
 
 
@@ -864,7 +1018,7 @@ a:hover {
 
 
 
-/* REGISTRATION */
+/* REGISTRTION */
 
 .registration {
     height: 100%;
@@ -906,7 +1060,7 @@ a:hover {
     background-color: green;
     color: white;
     padding: 5%;
-    ;
+;
     font-size: 1rem;
     border-radius: 0.3rem;
     border: 1px solid #F9F9F9;
@@ -967,7 +1121,7 @@ a:hover {
     margin-bottom: 10%;
 }
 
-.img-selector {
+.img-selecter {
     justify-content: center;
     flex-wrap: wrap;
     gap: 40%;
@@ -984,7 +1138,7 @@ textarea {
     margin-left: 25%;
 }
 
-.img-selector input[type="file"] {
+.img-selecter input[type="file"] {
     background-color: white;
 }
 
@@ -1009,7 +1163,7 @@ textarea {
 
 .size-of-move>label {
     display: block;
-    margin-bottom: 3px;
+    margin-bottom: 3;
 }
 
 .quote-form button {

@@ -55,6 +55,7 @@ public class SecurityConfiguration{
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/","/register", "/login", "/css/**", "/js/**","/img/**","/templates/**","/logout","/get_all_companies","/images/{id}","mailto:diyaz.turganaliev@alatoo.edu.kg").permitAll()
                         .requestMatchers("/updateMainPage").hasAuthority("ADMIN")
+                        .requestMatchers("/delete_company","/updateCompany","/saveUpdateCompany").hasAnyAuthority("ADMIN", "BUSINESSMEN")
                         .requestMatchers("/mainUser","/add_company","/save_company").authenticated()
                 )
                 .formLogin(form -> form

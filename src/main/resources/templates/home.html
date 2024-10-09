@@ -5,7 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
-    <title>A1 Fast Moving</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Подключение favicon -->
+    <link rel="apple-touch-icon" href="/favicon.ico"> <!-- Иконка для Apple устройств -->
+    <link rel="icon" type="image/png" href="/favicon.ico" sizes="32x32">
+    <title>E&D Moving</title>
 </head>
 
 <body>
@@ -81,7 +84,7 @@
                 <tr th:each="company:${allActiveCompanies}">
                     <div class="company-list-el">
                         <div class="logo align-center d-flex">
-                            <img th:src="@{/images/{id}(id=${company.images[0].id})}" height="140px" width="140px" alt="Company Image">
+                            <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
                             <div class="rating d-flex ">
                                 <h3 th:text="${company.getName()}"></h3>
                                 <span th:text="${company.getRating()}"></span>
@@ -99,6 +102,20 @@
                         <div class="d-flex">
                             <a href="#" style="color: #06965C;">Local movers</a>
                             <a href="#" style="color: #06965C;">Services +5</a>
+                            <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/delete_company}" method="post">
+                                <input th:value="${company.getId()}" type="number" hidden="hidden"
+                                       name="companyId"/>
+                                <td>
+                                    <input type="submit" class="btn btn-outline-success" value="Delete"/>
+                                </td>
+                            </form>
+                            <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/updateCompany}" method="get">
+                                <input th:value="${company.getId()}" type="number" hidden="hidden"
+                                       name="companyId"/>
+                                <td>
+                                    <input type="submit" class="btn btn-outline-success" value="Update"/>
+                                </td>
+                            </form>
                         </div>
                     </div>
                 </tr>
@@ -271,10 +288,7 @@
                     <div class="card-content">
                         <h2 class="card-title">Moving Pricing</h2>
                         <div class="separator"></div>
-                        <p class="card-description">
-                            A moving service or hiring a relocating company is not usually cheap irrespective of how
-                            far you will be moving. But most people who have.
-                        </p>
+                        <p class="card-description" th:text="${siteView.getMovingTipsAndTricks1()}"></p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -284,10 +298,7 @@
                     <div class="card-content">
                         <h2 class="card-title">Moving Pricing</h2>
                         <div class="separator"></div>
-                        <p class="card-description">
-                            A moving service or hiring a relocating company is not usually cheap irrespective of how
-                            far you will be moving. But most people who have.
-                        </p>
+                        <p class="card-description" th:text="${siteView.getMovingTipsAndTricks2()}"></p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -301,30 +312,8 @@
             <div class="rating__top">
                 <div class="rating__text d-flex">
                     <article>
-                        <p>Many in the United States are looking for the best moving companies because most people
-                            realize the value of professional service. A fully licensed and insured moving company is
-                            better at logistics management. The best movers can pack, load, transport, and unload safely
-                            and on time. The service can also be cheaper than self-moving. They offer both local and
-                            interstate moves. The best movers in San Francisco, San Diego, and elsewhere in California
-                            also offer storage facilities. </p>
+                        <p th:text="${siteView.getMovingCompaniesRatingsAndReviews()}"></p>
                         <br>
-                        <p>Here, we analyze some of the best interstate moving companies and local movers and packers
-                            and publish movers rating and reviews so you can identify the most reputed businesses
-                            easily.</p>
-                        <br>
-                        <p>Americans move a lot. Statistics reveal that Americans move 11.7 times on an average in their
-                            lifetime. They move for various reasons – a job change, upsizing to a new home, or just to
-                            live in a new neighborhood. It has also been noticed that younger people move more
-                            frequently. According to the Annual Social and Economic Supplement of the Current Population
-                            Survey for 2013, most moves are related to housing (48%), followed by family issues (30.3%),
-                            and job relocations (19.4%).
-                        </p>
-                        <br>
-                        <p>The US Census Bureau data reveals that 7.4 million Americans moved in 2019. It is common in
-                            the state of California as well. 501,000 people moved into the state in 2019, but many of
-                            them were foreign nationals. On the other hand, 691,000 local residents relocated to other
-                            states, with most of them going to Texas, Arizona, Washington state, Nevada, and Oregon.
-                            Most recently, Elon Musk too decided to move out from the Golden State to Texas.</p>
                     </article>
                     <div class="article-background">
                         <img src="/img/article-img.png" alt="">
@@ -336,11 +325,7 @@
 
                 <h3>What is a Moving Service?</h3>
                 <br>
-                <p>A moving service is a business that helps homeowners and commercial establishments relocate to a
-                    new place. Many companies will offer only local moves within the same city. But others offer
-                    long distance moves as well to another state or even another country. Some of them are
-                    all-inclusive or full-service businesses, which means that will do the packing, loading,
-                    transit, unloading, and even storing. </p>
+                <p th:text="${siteView.getWhatIsAMovingService()}"></p>
                 <br>
                 <p>The best moving companies in California will be:</p>
                 <br>

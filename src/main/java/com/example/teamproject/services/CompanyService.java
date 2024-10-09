@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -52,13 +53,12 @@ public class CompanyService {
         company.setRating(averageRating);
         companyRepository.save(company);
     }
-
-    public List<Company> listProducts(String name) {
-        if (name != null) return companyRepository.findByName(name);
-        return companyRepository.findAll();
+    public boolean isCompanyNameTaken(String name) {
+        return companyRepository.findCompanyByName(name) != null;
     }
 
-    public void saveCompany(Company company, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
+
+    public void saveCompany(Company company, MultipartFile file1) throws IOException {
         Image image1;
         Image image2;
         Image image3;
@@ -66,14 +66,6 @@ public class CompanyService {
             image1 = toImageEntity(file1);
             image1.setPreviewImage(true);
             company.addImageToCompany(image1);
-        }
-        if (file2.getSize() != 0) {
-            image2 = toImageEntity(file2);
-            company.addImageToCompany(image2);
-        }
-        if (file3.getSize() != 0) {
-            image3 = toImageEntity(file3);
-            company.addImageToCompany(image3);
         }
         Double averageRating = 0.0;
         company.setRating(averageRating);
@@ -100,6 +92,7 @@ public class CompanyService {
         image.setBytes(file.getBytes());
         return image;
     }
+
     public List<Company> getAllActiveCompanies() {
         return companyRepository.findCompaniesByActiveTrue();
     }
@@ -110,5 +103,23 @@ public class CompanyService {
 
     public Company getCompanyById(Long id) {
         return companyRepository.findById(id).orElse(null);
+    }
+    public void updateCompany(Long id,Company company, MultipartFile file) throws IOException {
+        Company company1 = companyRepository.findCompanyById(id);
+        if (file.getSize() != 0) {
+            Image image = toImageEntity(file);
+            image.setPreviewImage(true);
+            company1.getImages().set(0, image);
+            company1.addImageToCompany(image);
+            imageRepository.save(image);
+        }
+        company1.setName(company.getName());
+        company1.setPhoneNumber(company.getPhoneNumber());
+        company1.setAddress(company.getAddress());
+        company1.setInfo(company.getInfo());
+
+        company1.setPreviewImageId(company1.getImages().get(0).getId());
+
+        companyRepository.save(company1);
     }
 }

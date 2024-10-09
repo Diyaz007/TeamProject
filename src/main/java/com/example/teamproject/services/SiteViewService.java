@@ -19,6 +19,10 @@ public class SiteViewService {
         siteView1.setMovingCompanyStat(siteView.getMovingCompanyStat());
         siteView1.setReviewsStat(siteView.getReviewsStat());
         siteView1.setSatisfiedCustomersStat(siteView.getSatisfiedCustomersStat());
+        siteView1.setMovingTipsAndTricks1(siteView.getMovingTipsAndTricks1());
+        siteView1.setMovingTipsAndTricks2(siteView.getMovingTipsAndTricks2());
+        siteView1.setMovingCompaniesRatingsAndReviews(siteView.getMovingCompaniesRatingsAndReviews());
+        siteView1.setWhatIsAMovingService(siteView.getWhatIsAMovingService());
         siteView1.setCreatedDate(new Date());
         siteViewRepository.save(siteView1);
 

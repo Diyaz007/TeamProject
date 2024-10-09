@@ -29,7 +29,7 @@ public class SiteViewController {
             this.siteViewService.update(siteView);
             return "redirect:/";
         } catch (Exception e) {
-            return "registration";
+            return "redirect:/updateMainPage";
         }
     }
 }

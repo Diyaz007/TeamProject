@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.time.LocalDateTime;
@@ -19,7 +20,7 @@ import java.util.List;
 @Setter
 public class Company {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "company_id_seq")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @SequenceGenerator(name = "company_id_seq", sequenceName = "company_id_seq", allocationSize = 1)
     private Integer id;
 
@@ -46,7 +47,7 @@ public class Company {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "company")
-    private List<Image> images = new ArrayList<>();
+    private List<Image> images;
     private Long previewImageId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
@@ -62,6 +63,9 @@ public class Company {
     public void addImageToCompany(Image image) {
         image.setCompany(this);
         images.add(image);
+    }
+    public String getUserNameById() {
+        return usersID.getUsername();
     }
 
 

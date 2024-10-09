@@ -8,7 +8,6 @@
 </head>
 <body>
 <header th:insert="blocks/header :: header"></header>
-
     <main>
         <div class="quote d-flex">
             <div class="quote-limit  text-center">
@@ -18,37 +17,33 @@
                 <form th:action="@{/save_company}" th:object="${company}" class="quote-form  d-flex" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="company-name">Company name</label>
-                        <input th:value="${name}" name="name" type="text" id="company-name" placeholder="Company name">
+                        <input th:value="${name}" name="name" type="text" id="company-name" placeholder="Company name" required>
+                        <div  th:if="${error} != null">
+                            <div class="alert alert-danger">Company name is already used
+                            </div>
+                        </div>
                     </div>
         
                     <div class="form-group">
                         <label for="company-phone-number">Phone number</label>
-                        <input th:value="${phoneNumber}" name="phoneNumber" type="tel" id="company-phone-number" placeholder="+966 (***) *** ***">
+                        <input th:value="${phoneNumber}" name="phoneNumber" type="tel" id="company-phone-number" placeholder="+966 (***) *** ***" required>
                     </div>
         
                     <div class="form-group" id="address">
                         <label for="address">Address</label>
-                        <select th:value="${address}"  type="text" name="address">
+                        <select th:value="${address}"  type="text" name="address" required>
                             <option th:each="state:${states}" th:value="${state}">
                                 <th:block th:text="${state.getName()}"></th:block>
                             </option>
                         </select>
                         </div>
 
-                    <textarea th:value="${info}" name="info" id="company-info" placeholder="Enter company info" rows="10" cols="10"></textarea>
+                    <textarea th:value="${info}" name="info" id="company-info" placeholder="Enter company info" rows="10" cols="10" required></textarea>
 
                     <div class="img-selector d-flex">
                         <div class="form-group">
                             <label for="company-img">Company logo</label>
-                            <input th:value="${file1}" type="file" name="file1" id="company-img">
-                        </div>
-                        <div class="form-group">
-                            <label for="company-img">Date of move</label>
-                            <input th:value="${file2}" type="file" name="file2" id="company-img">
-                        </div>
-                        <div class="form-group">
-                            <label for="company-img">Date of move</label>
-                            <input th:value="${file3}" type="file" name="file3" id="company-img">
+                            <input th:value="${file1}" type="file" accept="image/jpeg" name="file1" id="company-img" required>
                         </div>
                     </div>
                     <button type="submit">Add Company</button>

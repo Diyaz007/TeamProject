@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/home.css">
+  <title>A1 Fast Moving</title>
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+<main>
+  <div class="quote d-flex">
+    <div class="quote-limit  text-center">
+      <h2>Update Company</h2>
+      <p>Your email address will not be published. Required fields are marked *</p>
+
+      <form th:action="@{/saveUpdateCompany}" th:object="${company}" class="quote-form  d-flex" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="company-name">Company name</label>
+          <input th:field="*{name}" th:value="${company.getName()}" name="name" type="text" id="company-name" placeholder="Company name" required>
+          <div  th:if="${error} != null">
+            <div class="alert alert-danger">Company name is already used
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="company-phone-number">Phone number</label>
+          <input th:field="*{phoneNumber}" th:value="${company.getPhoneNumber()}" name="phoneNumber" type="tel" id="company-phone-number" placeholder="+966 (***) *** ***" required>
+        </div>
+
+        <div class="form-group" id="address">
+          <label for="address">Address</label>
+          <select th:field="*{address}" th:value="${company.getAddress()}" type="text" name="address" required>
+            <option th:each="state:${states}" th:value="${state}">
+              <th:block th:text="${state.getName()}"></th:block>
+            </option>
+          </select>
+        </div>
+
+        <textarea th:field="*{info}" th:value="${company.getInfo()}" name="info" id="company-info" placeholder="Enter company info" rows="10" cols="10" required></textarea>
+
+        <div class="img-selector d-flex">
+          <div class="form-group">
+            <label for="company-img">Company logo</label>
+            <input th:value="${file1}" type="file" accept="image/jpeg" name="file1" id="company-img" required>
+            <input th:value="${company.getId()}" type="number" hidden="hidden" name="companyId"/>
+          </div>
+        </div>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+
+<footer th:insert="blocks/footer :: footer"></footer>
+</body>

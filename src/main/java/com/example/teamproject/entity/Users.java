@@ -36,5 +36,7 @@ public class Users {
     @Column(name = "CREATED_DATE")
     private Date createdDate;
 
+    
+
 }
 

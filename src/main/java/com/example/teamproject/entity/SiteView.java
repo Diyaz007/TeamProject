@@ -19,8 +19,21 @@ public class SiteView {
     @Column(name = "MAIN_TEXT")
     private String mainText;
 
-    @Column(name = "WELCOME_TEXT")
-    private String welcomeText;
+    @Lob
+    @Column(name = "Moving_Companies_Ratings_and_Reviews")
+    private String movingCompaniesRatingsAndReviews;
+
+    @Lob
+    @Column(name = "What_is_a_Moving_Service?")
+    private String whatIsAMovingService;
+
+    @Lob
+    @Column(name = "Moving_Tips_And_Tricks_1")
+    private String movingTipsAndTricks1;
+
+    @Lob
+    @Column(name = "Moving_Tips_And_Tricks_2")
+    private String movingTipsAndTricks2;
 
     @Column(name = "LOCATIONS_STAT")
     private String locationsStat;
