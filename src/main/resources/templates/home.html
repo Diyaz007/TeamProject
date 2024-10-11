@@ -5,9 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon"> <!-- Подключение favicon -->
-    <link rel="apple-touch-icon" href="/favicon.ico"> <!-- Иконка для Apple устройств -->
-    <link rel="icon" type="image/png" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/favicon.ico">
     <title>E&D Moving</title>
 </head>
 
@@ -17,6 +16,7 @@
     <section class="search d-flex">
         <div class="search-wrapper limit">
             <div class="selection-text">
+
                 <h1 th:text="${siteView.getMainText()}"></h1>
             </div>
             <div class="selection d-flex limit">
@@ -26,7 +26,7 @@
                     <option value="goods">Goods</option>
                 </select>
                 <select name="location" id="location" required>
-                    <option value="" disabled selected hidden>Choose loaction</option>
+                    <option value="" disabled selected hidden>Choose location</option>
                     <option value="bishkek">Bishkek</option>
                 </select>
                 <button type="submit" id="search-submit-button">Search Moving Companies</button>
@@ -38,21 +38,25 @@
         <div class="limit">
             <div class="stat-items flex-between d-flex">
                 <div class="stat-item">
+
                     <h3 th:text="${siteView.getLocationsStat()}"></h3>
                     <p>LOCATIONS</p>
                 </div>
                 <div class="divider">/</div>
                 <div class="stat-item">
+
                     <h3 th:text="${siteView.getMovingCompanyStat()}"></h3>
                     <p>MOVING COMPANIES</p>
                 </div>
                 <div class="divider">/</div>
                 <div class="stat-item">
+
                     <h3 th:text="${siteView.getReviewsStat()}"></h3>
                     <p>REVIEWS</p>
                 </div>
                 <div class="divider">/</div>
                 <div class="stat-item">
+
                     <h3 th:text="${siteView.getSatisfiedCustomersStat()}"></h3>
                     <p>SATISFIED CUSTOMERS</p>
                 </div>
@@ -288,7 +292,8 @@
                     <div class="card-content">
                         <h2 class="card-title">Moving Pricing</h2>
                         <div class="separator"></div>
-                        <p class="card-description" th:text="${siteView.getMovingTipsAndTricks1()}"></p>
+
+                        <p th:text="${siteView.getMovingTipsAndTricks1()}" class="card-description"></p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -298,7 +303,8 @@
                     <div class="card-content">
                         <h2 class="card-title">Moving Pricing</h2>
                         <div class="separator"></div>
-                        <p class="card-description" th:text="${siteView.getMovingTipsAndTricks2()}"></p>
+
+                        <p th:text="${siteView.getMovingTipsAndTricks2()}" class="card-description"></p>
                         <a href="#" class="read-more">Read More</a>
                     </div>
                 </div>
@@ -312,6 +318,7 @@
             <div class="rating__top">
                 <div class="rating__text d-flex">
                     <article>
+
                         <p th:text="${siteView.getMovingCompaniesRatingsAndReviews()}"></p>
                         <br>
                     </article>
@@ -325,6 +332,7 @@
 
                 <h3>What is a Moving Service?</h3>
                 <br>
+
                 <p th:text="${siteView.getWhatIsAMovingService()}"></p>
                 <br>
                 <p>The best moving companies in California will be:</p>
