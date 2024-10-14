@@ -16,18 +16,26 @@
     <section class="search d-flex">
         <div class="search-wrapper limit">
             <div class="selection-text">
-
-                <h1 th:text="${siteView.getMainText()}"></h1>
+                <div th:if="${#authorization.expression('isAuthenticated()')}">
+                    <h1 th:text="${siteView.getMainText()}+${#authentication.name}"></h1>
+                </div>
+                <div th:if="${#authorization.expression('isAnonymous()')}">
+                    <h1>BEST MOVING COMPANIES IN AMERICA</h1>
+                </div>
             </div>
             <div class="selection d-flex limit">
                 <input type="text" placeholder="What are you looking for" required>
                 <select name="category" id="category" required>
                     <option value="" disabled selected hidden>Select a category</option>
-                    <option value="goods">Goods</option>
+                    <option th:each="movingSize:${movingSizes}" th:value="${movingSize}">
+                        <th:block th:text="${movingSize.getName()}"></th:block>
+                    </option>
                 </select>
                 <select name="location" id="location" required>
-                    <option value="" disabled selected hidden>Choose location</option>
-                    <option value="bishkek">Bishkek</option>
+                    <option value="" disabled selected hidden>Select a category</option>
+                    <option th:each="state:${states}" th:value="${state}">
+                        <th:block th:text="${state.getName()}"></th:block>
+                    </option>
                 </select>
                 <button type="submit" id="search-submit-button">Search Moving Companies</button>
             </div>

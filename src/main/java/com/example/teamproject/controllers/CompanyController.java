@@ -4,6 +4,7 @@ import ch.qos.logback.core.model.Model;
 import com.example.teamproject.entity.Company;
 import com.example.teamproject.entity.SiteView;
 import com.example.teamproject.entity.Users;
+import com.example.teamproject.enums.MovingSize;
 import com.example.teamproject.enums.Roles;
 import com.example.teamproject.enums.States;
 import com.example.teamproject.repositories.ImageRepository;
@@ -61,6 +62,7 @@ public class CompanyController {
             return "redirect:/";
         }
         }catch (Exception e){
+            System.out.println(e.getMessage());
             return "redirect:/add_company?error=true";
         }
     }
@@ -74,7 +76,11 @@ public class CompanyController {
     public ModelAndView getAllCompanies() {
         ModelAndView modelAndView = new ModelAndView("home");
         ArrayList<Company> allActiveCompanies = (ArrayList<Company>) companyService.getAllActiveCompanies();
+        ArrayList<States> states = new ArrayList<>(Arrays.asList(States.values()));
+        ArrayList<MovingSize> movingSizes = new ArrayList<>(Arrays.asList(MovingSize.values()));
         modelAndView.addObject("allActiveCompanies", allActiveCompanies);
+        modelAndView.addObject("states", states);
+        modelAndView.addObject("movingSizes", movingSizes);
         modelAndView.addObject("siteView", siteViewService.getById(1));
         return modelAndView;
     }
@@ -104,7 +110,6 @@ public class CompanyController {
             this.companyService.updateCompany(Id,company,file1);
             return "redirect:/";
         } catch (Exception e) {
-            System.out.println(e.getMessage());
             return "redirect:/update_company?error=true&companyId=" + Id;
         }
     }

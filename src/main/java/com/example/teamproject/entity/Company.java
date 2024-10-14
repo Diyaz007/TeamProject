@@ -47,7 +47,7 @@ public class Company {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,
             mappedBy = "company")
-    private List<Image> images;
+    private List<Image> images = new ArrayList<>();
     private Long previewImageId;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,

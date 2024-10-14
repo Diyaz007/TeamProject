@@ -58,14 +58,12 @@ public class CompanyService {
     }
 
 
-    public void saveCompany(Company company, MultipartFile file1) throws IOException {
-        Image image1;
-        Image image2;
-        Image image3;
-        if (file1.getSize() != 0) {
-            image1 = toImageEntity(file1);
-            image1.setPreviewImage(true);
-            company.addImageToCompany(image1);
+    public void saveCompany(Company company, MultipartFile file) throws IOException {
+        Image image;
+        if (file.getSize() != 0) {
+            image = toImageEntity(file);
+            image.setPreviewImage(true);
+            company.addImageToCompany(image);
         }
         Double averageRating = 0.0;
         company.setRating(averageRating);
