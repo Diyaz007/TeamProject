@@ -8,7 +8,7 @@
     <title>E&D Moving</title>
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="~{blocks/header :: header}"></header>
 
 <main>
     <!-- Error message -->
@@ -100,6 +100,6 @@
     </div>
 </main>
 
-<footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="~{blocks/footer :: footer}"></footer>
 </body>
 </html>

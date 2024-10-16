@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="~{blocks/header :: header}"></header>
 <main>
   <section class="search d-flex">
     <div class="search-wrapper limit">
@@ -490,69 +490,6 @@
     </div>
   </section>
 </main>
-<footer>
-  <div class="nav-bottom limit">
-    <div class="d-flex columns flex-between">
-      <div class="bottom-nav footer-column d-flex flex-column">
-        <div class="footer-logo d-flex">
-          <img src="images/logo.svg" alt="">
-          <a href="" id="logo-text">A1 FAST MOVING</a>
-        </div>
-
-        <ul class="d-flex footer-nav">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="#">Location</a>
-          </li>
-          <li>
-            <a href="#">Services</a>
-          </li>
-          <li>
-            <a href="#">Tips & Tricks</a>
-          </li>
-        </ul>
-        <div class="quote-add_company d-flex footer-nav">
-          <div class="add-company">
-            <span><span style="color: green;">+ </span>Add Company</span>
-          </div>
-          <div class="get-quote">
-            Get Quote
-          </div>
-          <div class="searchbar">
-            <img class="search-icon" src="images/searchbar.svg" alt="">
-          </div>
-        </div>
-        <div class="footer-bottom d-flex">
-          <p>2005-2020 © A1 Fast Moving - Top Rated California Moving Companies</p>
-        </div>
-      </div>
-      <div class="footer-column">
-        <h3>Moving Services</h3>
-        <ul>
-          <li><a href="#">Local Movers</a></li>
-          <li><a href="#">Long Distance</a></li>
-          <li><a href="#">Movers</a></li>
-          <li><a href="#">Office Movers</a></li>
-          <li><a href="#">Piano Movers</a></li>
-          <li><a href="#">State to State Movers</a></li>
-          <li><a href="#">Storages</a></li>
-        </ul>
-      </div>
-      <div class="footer-column">
-        <h3>Locations</h3>
-        <ul>
-          <li><a href="#">San Francisco</a></li>
-          <li><a href="#">Oakland</a></li>
-          <li><a href="#">San Jose</a></li>
-          <li><a href="#">San Diego</a></li>
-          <li><a href="#">Los Angeles</a></li>
-          <li><a href="#">Ontario</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</footer>
+<footer th:insert="~{blocks/footer :: footer}"></footer>
 </body>
 </html>

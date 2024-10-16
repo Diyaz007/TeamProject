@@ -5,7 +5,7 @@
         <div class="d-flex header-top info">
           <p>Best American Moving Companies</p>
           <div th:if="${#authorization.expression('isAuthenticated()')}">
-            <p>WELCOME, <span th:text="${#authentication.name}">User</span>!</p>
+            <p>WELCOME, <span th:text="${#authentication.name}" class="user__greeting">User</span>!</p>
           </div>
           <div class="contact">
             <p class="questions">Any questions?</p>
@@ -63,7 +63,57 @@
               </div>
               <div class="searchbar">
                 <img class="search-icon" src="../img/searchbar.svg" alt="">
-                <img class="burger-menu" src="../img/burger-menu.svg" alt="">
+                <div class="off-screen-menu">
+                  <ul>
+                    <li>
+                      <a href="/">Home</a>
+                    </li>
+                    <li>
+                      <a href="#locations">Location</a>
+                    </li>
+                    <li>
+                      <a href="#tipsAndTricks">Tips & Tricks</a>
+                    </li>
+                    <li>
+                      <a href="#services">Services</a>
+                    </li>
+                    <li sec:authorize="hasAuthority('ADMIN')">
+                      <a href="/updateMainPage">Update Page</a>
+                    </li>
+                    <li>
+                      <a>
+                        <div th:if="${#authorization.expression('isAuthenticated()')}">
+                          <div class="burger-log-but">
+                            <form th:action="@{/logout}" method="post">
+                              <a class="logout" type="submit">Logout</a>
+                            </form>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    <li>
+                      <div th:if="${#authorization.expression('isAnonymous()')}">
+                        <div class="burger-log-but">
+                          <a class="login" href="/login">Log in</a>
+                        </div>
+                      </div>
+                    </li>
+                    <li>
+                      <a href="/add_company"><span>+ </span>Add Company</a>
+                    </li>
+                    <li>
+                      <a href="#">Get quote</a>
+                    </li>
+                  </ul>
+                </div>
+
+                <nav>
+                  <div class="ham-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </nav>
               </div>
             </div>
           </div>

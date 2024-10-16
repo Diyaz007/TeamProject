@@ -7,7 +7,7 @@
     <title>A1 Fast Moving</title>
 </head>
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="~{blocks/header :: header}"></header>
     <main>
         <div class="quote d-flex">
             <div class="quote-limit  text-center">
@@ -19,8 +19,7 @@
                         <label for="company-name">Company name</label>
                         <input th:value="${name}" name="name" type="text" id="company-name" placeholder="Company name" required>
                         <div  th:if="${error} != null">
-                            <div class="alert alert-danger">Company name is already used
-                            </div>
+                            <div class="alert alert-danger">Company name is already used</div>
                         </div>
                     </div>
         
@@ -31,7 +30,7 @@
         
                     <div class="form-group" id="address">
                         <label for="address">Address</label>
-                        <select th:value="${address}"  type="text" name="address" required>
+                        <select class="choose-state" th:value="${address}"  type="text" name="address" required>
                             <option th:each="state:${states}" th:value="${state}">
                                 <th:block th:text="${state.getName()}"></th:block>
                             </option>
@@ -53,5 +52,5 @@
     </main>
 
 
-<footer th:insert="blocks/footer :: footer"></footer>
+<footer th:insert="~{blocks/footer :: footer}"></footer>
 </body>

@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="../css/swiper-bundle.min.css">
     <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../img/favicon.ico">
+    <script src="/js/home.js"></script>
     <title>E&D Moving</title>
 </head>
 
 <body>
-<header th:insert="blocks/header :: header"></header>
+<header th:insert="~{blocks/header :: header}"></header>
 <main>
     <section class="search d-flex">
         <div class="search-wrapper limit">
@@ -54,7 +56,7 @@
                 <div class="stat-item">
 
                     <h3 th:text="${siteView.getMovingCompanyStat()}"></h3>
-                    <p>MOVING COMPANIES</p>
+                    <p>MOVING COMPANIESL</p>
                 </div>
                 <div class="divider">/</div>
                 <div class="stat-item">
@@ -96,39 +98,44 @@
                 <tr th:each="company:${allActiveCompanies}">
                     <div class="company-list-el">
                         <div class="logo align-center d-flex">
-                            <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
+                             <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
                             <div class="rating d-flex ">
                                 <h3 th:text="${company.getName()}"></h3>
                                 <span th:text="${company.getRating()}"></span>
                             </div>
                         </div>
                         <div class="section-divider"></div>
-                        <div class="location d-flex">
-                            <img src="/img/location marker.svg" alt="">
-                            <h5 th:text="${company.getAddress().getName()}"></h5>
+                        <div class="company-list-el-info">
+                            <div class="location d-flex">
+                                <img src="/img/location marker.svg" alt="">
+                                <h5 th:text="${company.getAddress().getName()}"></h5>
+                            </div>
+                            <div class="location d-flex">
+                                <img src="/img/Call.svg" alt="">
+                                <p th:text="${company.getPhoneNumber()}"></p>
+                            </div>
+                            <div class="d-flex">
+                                <a href="#" style="color: #06965C;">Local movers</a>
+                                <a href="#" style="color: #06965C;">Services +5</a>
+                            </div>
+                            <div class="d-flex admin-company-edit">
+                                <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/delete_company}" method="post">
+                                    <input th:value="${company.getId()}" type="number" hidden="hidden"
+                                           name="companyId"/>
+                                    <td>
+                                        <input type="submit" class="btn btn-outline-success" value="Delete"/>
+                                    </td>
+                                </form>
+                                <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/updateCompany}" method="get">
+                                    <input th:value="${company.getId()}" type="number" hidden="hidden"
+                                           name="companyId"/>
+                                    <td>
+                                        <input type="submit" class="btn btn-outline-success" value="Update"/>
+                                    </td>
+                                </form>
+                            </div>
                         </div>
-                        <div class="location d-flex">
-                            <img src="/img/Call.svg" alt="">
-                            <p th:text="${company.getPhoneNumber()}"></p>
-                        </div>
-                        <div class="d-flex">
-                            <a href="#" style="color: #06965C;">Local movers</a>
-                            <a href="#" style="color: #06965C;">Services +5</a>
-                            <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/delete_company}" method="post">
-                                <input th:value="${company.getId()}" type="number" hidden="hidden"
-                                       name="companyId"/>
-                                <td>
-                                    <input type="submit" class="btn btn-outline-success" value="Delete"/>
-                                </td>
-                            </form>
-                            <form th:if="${company.getUserNameById() == #authentication.getName()}" th:action="@{/updateCompany}" method="get">
-                                <input th:value="${company.getId()}" type="number" hidden="hidden"
-                                       name="companyId"/>
-                                <td>
-                                    <input type="submit" class="btn btn-outline-success" value="Update"/>
-                                </td>
-                            </form>
-                        </div>
+
                     </div>
                 </tr>
             </div>
@@ -146,139 +153,159 @@
                     <h2 class="section-header-label">Moving Services</h2>
                 </div>
                 <div class="arrows d-flex">
-                    <button class="arrow d-flex"><</button>
-                    <button class="arrow d-flex">></button>
+                    <div class="arrow d-flex service-prev"><img src="../img/prevButton.svg" alt=""></div>
+                    <div class="arrow d-flex service-next"><img src="../img/nextButton.svg" alt=""></div>
                 </div>
             </div>
 
 
-            <div class="service-types d-flex flex-wrap">
-                <div class="service-type d-flex">
-                    <img src="/img/local-movers.svg" alt="">
-                    <h4>Local Movers</h4>
-                    <h6>(19) listings</h6>
-                    <br>
+            <div class="service-types d-flex flex-wrap swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="service-type d-flex">
+                            <img src="/img/local-movers.svg" alt="">
+                            <h4>Local Movers</h4>
+                            <h6>(19) listings</h6>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-type d-flex">
+                            <img src="/img/local-movers.svg" alt="">
+                            <h4>Local Movers</h4>
+                            <h6>(19) listings</h6>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-type d-flex">
+                            <img src="/img/local-movers.svg" alt="">
+                            <h4>Local Movers</h4>
+                            <h6>(19) listings</h6>
+                            <br>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-type d-flex">
+                            <img src="/img/local-movers.svg" alt="">
+                            <h4>Local Movers</h4>
+                            <h6>(19) listings</h6>
+                            <br>
+                        </div>
+                    </div>
                 </div>
-                <div class="service-type d-flex">
-                    <img src="/img/local-movers.svg" alt="">
-                    <h4>Local Movers</h4>
-                    <h6>(19) listings</h6>
-                    <br>
-                </div>
-                <div class="service-type d-flex">
-                    <img src="/img/local-movers.svg" alt="">
-                    <h4>Local Movers</h4>
-                    <h6>(19) listings</h6>
-                    <br>
-                </div>
-                <div class="service-type d-flex">
-                    <img src="/img/local-movers.svg" alt="">
-                    <h4>Local Movers</h4>
-                    <h6>(19) listings</h6>
-                    <br>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="locations" class="location-list">
+    <section class="location-list">
         <div class="limit">
-            <div class="locations">
+            <div class="locations swiper" style="padding: 5%">
                 <div class="text-center">
                     <h2 class="section-header-label">Find Your Movers in Locations</h2>
                     <br><br>
                 </div>
-                <div class="d-flex">
-                    <ul class="mover-list">
-                        <li><a href="#">San Francisco</a> (17)</li>
-                        <li><a href="#">Oakland</a>(14)</li>
-                        <li><a href="#">San Jose</a>(15)</li>
-                        <li><a href="#">San Diego</a>(12)</li>
-                        <li><a href="#">Los Angeles</a>(13)</li>
-                        <li><a href="#">Ontario</a>(10)</li>
-                        <li><a href="#">San Francisco</a> (17)</li>
-                        <li><a href="#">Oakland</a>(14)</li>
-                        <li><a href="#">San Jose</a>(15)</li>
-                        <li><a href="#">San Diego</a>(12)</li>
-                        <li><a href="#">Los Angeles</a>(13)</li>
-                        <li><a href="#">Ontario</a>(10)</li>
-                    </ul>
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <ul class="mover-list">
+                            <li><a href="#">San Francisco</a> (17)</li>
+                            <li><a href="#">Oakland</a>(14)</li>
+                            <li><a href="#">San Jose</a>(15)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="mover-list">
+                            <li><a href="#">San Diego</a>(12)</li>
+                            <li><a href="#">Los Angeles</a>(13)</li>
+                            <li><a href="#">Ontario</a>(10)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="mover-list">
+                            <li><a href="#">San Francisco</a> (17)</li>
+                            <li><a href="#">Oakland</a>(14)</li>
+                            <li><a href="#">San Jose</a>(15)</li>
+                        </ul>
+                    </div>
+                    <div class="swiper-slide">
+                        <ul class="mover-list">
+                            <li><a href="#">San Diego</a>(12)</li>
+                            <li><a href="#">Los Angeles</a>(13)</li>
+                            <li><a href="#">Ontario</a>(10)</li>
+                        </ul>
+                    </div>
                 </div>
+                <div class="swiper-button-next location-next"><img src="../img/prevButton.svg" alt=""></div>
+                <div class="swiper-button-prev location-prev"><img src="../img/nextButton.svg" alt=""></div>
             </div>
         </div>
     </section>
 
     <section class="reviews">
-        <div class="limit ">
+        <div class="limit">
             <div class="section-header">
                 <div class="header-left d-flex">
                     <h2 class="section-header-label">Latest Reviews</h2>
                     <a href="#" class="see-all">See all</a>
                 </div>
                 <div class="arrows d-flex">
-                    <button class="arrow d-flex"><</button>
-                    <button class="arrow d-flex">></button>
+                    <div class="arrow d-flex prev"><img src="../img/prevButton.svg" alt=""></div>
+                    <div class="arrow d-flex next"><img src="../img/nextButton.svg" alt=""></div>
                 </div>
             </div>
-            <div class="d-flex flex-wrap justify-between review-list">
-                <div class="review-list-el">
-                    <div class="review-logo align-center d-flex">
-                        <img src="/img/review-logo.svg" alt="">
-                        <div class="rating d-flex ">
-                            <h3>California Movers USA</h3>
-                            <span>4.9</span>
+            <div class="swiper review-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="review-logo align-center d-flex">
+                                <img src="../img/review-logo.svg" alt="">
+                                <div class="rating d-flex ">
+                                    <h3>California Movers USA</h3>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="review-comment d-flex">
+                                <img src="../img/review-quote.svg" alt="">
+                                <div class="review-comment-text">
+                                    Andrew did a fantastic job with our move. Went above and beyond in helping us
+                                    assemble
+                                    our furniture and helping place everything in the desired rooms. He even made
+                                    sure to
+                                    say hello to our dog. Will be letting our friends of the great service and
+                                    recommending!!!
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="section-divider"></div>
-                    <div class="review-comment d-flex">
-                        <img src="/img/review-quote.svg" alt="">
-                        <div class="review-comment-text">
-                            Andrew did a fantastic job with our move. Went above and beyond in helping us assemble
-                            our furniture and helping place everything in the desired rooms. He even made sure to
-                            say hello to our dog. Will be letting our friends of the great service and
-                            recommending!!! -->
-                        </div>
-                    </div>
-                </div>
-                <div class="review-list-el">
-                    <div class="review-logo align-center d-flex">
-                        <img src="/img/review-logo.svg" alt="">
-                        <div class="rating d-flex ">
-                            <h3>California Movers USA</h3>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div class="review-comment d-flex">
-                        <img src="/img/review-quote.svg" alt="">
-                        <div class="review-comment-text">
-                            Andrew did a fantastic job with our move. Went above and beyond in helping us assemble
-                            our furniture and helping place everything in the desired rooms. He even made sure to
-                            say hello to our dog. Will be letting our friends of the great service and
-                            recommending!!! -->
-                        </div>
-                    </div>
-                </div>
-                <div class="review-list-el">
-                    <div class="review-logo align-center d-flex">
-                        <img src="/img/review-logo.svg" alt="">
-                        <div class="rating d-flex ">
-                            <h3>California Movers USA</h3>
-                            <span>4.9</span>
-                        </div>
-                    </div>
-                    <div class="section-divider"></div>
-                    <div class="review-comment d-flex">
-                        <img src="/img/review-quote.svg" alt="">
-                        <div class="review-comment-text">
-                            Andrew did a fantastic job with our move. Went above and beyond in helping us assemble
-                            our furniture and helping place everything in the desired rooms. He even made sure to
-                            say hello to our dog. Will be letting our friends of the great service and
-                            recommending!!! -->
+                    <div class="swiper-slide">
+                        <div class="review-card">
+                            <div class="review-logo align-center d-flex">
+                                <img src="../img/review-logo.svg" alt="">
+                                <div class="rating d-flex ">
+                                    <h3>California Movers USA</h3>
+                                    <span>4.9</span>
+                                </div>
+                            </div>
+                            <div class="section-divider"></div>
+                            <div class="review-comment d-flex">
+                                <img src="../img/review-quote.svg" alt="">
+                                <div class="review-comment-text">
+                                    Andrew did a fantastic job with our move. Went above and beyond in helping us
+                                    assemble
+                                    our furniture and helping place everything in the desired rooms. He even made
+                                    sure to
+                                    say hello to our dog. Will be letting our friends of the great service and
+                                    recommending!!!
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="review-swiper-pagination pagination-wrapper"></div>
             </div>
+
         </div>
     </section>
 
@@ -290,32 +317,36 @@
                     <a href="#" class="see-all">See all</a>
                 </div>
                 <div class="arrows d-flex">
-                    <button class="arrow d-flex"><</button>
-                    <button class="arrow d-flex">></button>
+                    <div class="arrow d-flex tips-prev"><img src="../img/prevButton.svg" alt=""></div>
+                    <div class="arrow d-flex tips-next"><img src="../img/nextButton.svg" alt=""></div>
                 </div>
             </div>
-            <div class=" cards d-flex flex-wrap justify-between">
-                <div class="card d-flex">
-                    <img src="/img/review-logo.svg" alt="Moving Image">
-                    <div class="card-content">
-                        <h2 class="card-title">Moving Pricing</h2>
-                        <div class="separator"></div>
-
-                        <p th:text="${siteView.getMovingTipsAndTricks1()}" class="card-description"></p>
-                        <a href="#" class="read-more">Read More</a>
+            <div class="cards d-flex flex-wrap justify-between swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="card d-flex">
+                            <img src="/img/review-logo.svg" alt="Moving Image">
+                            <div class="card-content">
+                                <h2 class="card-title">Moving Pricing</h2>
+                                <div class="separator"></div>
+                                <p th:text="${siteView.getMovingTipsAndTricks1()}" class="card-description"></p>
+                                <a href="#" class="read-more">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="card d-flex">
+                            <img src="../img/review-logo.svg" alt="Moving Image">
+                            <div class="card-content">
+                                <h2 class="card-title">Moving Pricing</h2>
+                                <div class="separator"></div>
+                                <p th:text="${siteView.getMovingTipsAndTricks2()}" class="card-description"></p>
+                                <a href="#" class="read-more">Read More</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="card d-flex">
-                    <img src="/img/review-logo.svg" alt="Moving Image">
-                    <div class="card-content">
-                        <h2 class="card-title">Moving Pricing</h2>
-                        <div class="separator"></div>
-
-                        <p th:text="${siteView.getMovingTipsAndTricks2()}" class="card-description"></p>
-                        <a href="#" class="read-more">Read More</a>
-                    </div>
-                </div>
+                <div class="tips-swiper-pagination pagination-wrapper"></div>
             </div>
         </div>
     </section>
@@ -382,7 +413,9 @@
         </div>
     </section>
 </main>
-<header th:insert="blocks/footer :: footer"></header>
+<header th:insert="~{blocks/footer :: footer}"></header>
 
 </body>
+<script src="/js/swiper-bundle.min.js"></script>
+<script src="/js/home.js"></script>
 </html>

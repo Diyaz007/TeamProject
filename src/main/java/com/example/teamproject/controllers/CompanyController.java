@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@Slf4j
+
 @Controller
 public class CompanyController {
     @Autowired
@@ -53,16 +53,15 @@ public class CompanyController {
     public String saveCompany(@ModelAttribute(name = "company") Company company, @RequestParam("file1") MultipartFile file1) throws IOException {
         try {
             companyService.saveCompany(company, file1);
-        if (authenticatedUser().getRole().equals(Roles.USER)) {
-            Users user = authenticatedUser();
-            user.setRole(Roles.BUSINESSMEN);
-            usersService.update(user);
-            return "redirect:/";
-        }else {
-            return "redirect:/";
-        }
+            if (authenticatedUser().getRole().equals(Roles.USER)) {
+                Users user = authenticatedUser();
+                user.setRole(Roles.BUSINESSMEN);
+                usersService.update(user);
+                return "redirect:/";
+            }else {
+                return "redirect:/";
+            }
         }catch (Exception e){
-            System.out.println(e.getMessage());
             return "redirect:/add_company?error=true";
         }
     }
@@ -92,7 +91,7 @@ public class CompanyController {
 
     @GetMapping(value = "/updateCompany")
     public ModelAndView updateCompany(@RequestParam(value = "error", required = false) Boolean error,
-                                 @RequestParam(name = "companyId") Long companyId) {
+                                      @RequestParam(name = "companyId") Long companyId) {
         ArrayList<States> states = new ArrayList<States>(Arrays.asList(States.values()));
         ModelAndView modelAndView = new ModelAndView("updateCompany");
         modelAndView.addObject("states", states);
@@ -110,6 +109,7 @@ public class CompanyController {
             this.companyService.updateCompany(Id,company,file1);
             return "redirect:/";
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             return "redirect:/update_company?error=true&companyId=" + Id;
         }
     }
