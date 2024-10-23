@@ -543,6 +543,8 @@ a.login, a.logout{
 
     .show-more {
         background-color: #F9F9F9;
+        border: none;
+        width: 100%;
         text-align: center;
         border-radius: 0.3rem;
         font-size: medium;
@@ -1350,6 +1352,16 @@ a.login, a.logout{
     height: 100%;
 }
 
+.form__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3% 0;
+    gap: 15px;
+}
+
+
 .reg-page {
     background-color: #F9F9F9;
     height: 100%;
@@ -1357,17 +1369,42 @@ a.login, a.logout{
 }
 
 .reg {
-    padding-bottom: 10%;
-
+    padding-bottom: 5%;
 }
+
+.log {
+    padding-bottom: 10%;
+}
+
+
+.reg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
 
 .reg span {
     font-size: 1.1rem;
 }
 
-.reg input {
+.log input {
     width: 100%;
-    padding: 5%;
+    display: block;
+    padding: 4%;
+    margin-top: 5px;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: 1px solid #d1d1d1;
+    outline: none;
+    box-shadow: none;
+}
+
+.reg input {
+    width: 60%;
+    display: block;
+    padding: 2%;
     font-size: 1rem;
     border-radius: 0.3rem;
     border: 1px solid #d1d1d1;
@@ -1376,16 +1413,22 @@ a.login, a.logout{
 }
 
 .privacy {
+    flex-direction: column;
     justify-content: start;
-    gap: 5%;
+    gap: 10px;
     margin-bottom: 10%;
+    align-items: center;
+}
+
+.signup {
+    align-items: center;
 }
 
 .signup button {
-    width: 110%;
+    width: 70%;
     background-color: green;
     color: white;
-    padding: 5%;
+    padding: 3%;
     font-size: 1rem;
     border-radius: 0.3rem;
     border: 1px solid #F9F9F9;
@@ -1396,6 +1439,12 @@ a.login, a.logout{
 .signup span {
     margin-bottom: 4%;
     font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .signup span, .signup a{
+        font-size: 80%;
+    }
 }
 
 

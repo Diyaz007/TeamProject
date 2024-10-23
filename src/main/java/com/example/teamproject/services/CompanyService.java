@@ -10,6 +10,9 @@ import com.example.teamproject.repositories.CompanyRepository;
 import com.example.teamproject.repositories.ImageRepository;
 import com.example.teamproject.repositories.ReviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -92,8 +95,9 @@ public class CompanyService {
         return image;
     }
 
-    public List<Company> getAllActiveCompanies() {
-        return companyRepository.findCompaniesByActiveTrue();
+    public Page<Company> getAllActiveCompanies(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return companyRepository.findCompaniesByActiveTrue(pageable);
     }
 
     public void deleteCompany(Long id) {

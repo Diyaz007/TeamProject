@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<header th:insert="~{blocks/header :: header}"></header>
+<header th:insert="~{blocks/header :: header}" ></header>
 <main>
     <section class="search d-flex">
         <div class="search-wrapper limit">
@@ -98,7 +98,7 @@
                 <tr th:each="company:${allActiveCompanies}">
                     <div class="company-list-el">
                         <div class="logo align-center d-flex">
-                             <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
+                            <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
                             <div class="rating d-flex ">
                                 <h3 th:text="${company.getName()}"></h3>
                                 <span th:text="${company.getRating()}"></span>
@@ -139,10 +139,12 @@
                     </div>
                 </tr>
             </div>
-            <div class="show-more">
-                <p>Show more</p>
-            </div>
+            <button class="show-more">Show More</button>
+            <span class="has-more" style="display: none" th:text="${hasMore}"></span>
         </div>
+        <script>
+
+        </script>
     </section>
 
 

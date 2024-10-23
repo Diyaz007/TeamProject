@@ -13,6 +13,7 @@ import com.example.teamproject.services.SiteViewService;
 import com.example.teamproject.services.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -72,15 +73,17 @@ public class CompanyController {
     }
 
     @RequestMapping(value = "/get_all_companies", method = RequestMethod.GET)
-    public ModelAndView getAllCompanies() {
+    public ModelAndView getAllCompanies(@RequestParam(value = "page", defaultValue = "0") int page,
+                                        @RequestParam(value = "size", defaultValue = "6") int size) {
         ModelAndView modelAndView = new ModelAndView("home");
-        ArrayList<Company> allActiveCompanies = (ArrayList<Company>) companyService.getAllActiveCompanies();
+        Page<Company> pagedCompanies = companyService.getAllActiveCompanies(page, size);
         ArrayList<States> states = new ArrayList<>(Arrays.asList(States.values()));
         ArrayList<MovingSize> movingSizes = new ArrayList<>(Arrays.asList(MovingSize.values()));
-        modelAndView.addObject("allActiveCompanies", allActiveCompanies);
+        modelAndView.addObject("allActiveCompanies", pagedCompanies);
         modelAndView.addObject("states", states);
         modelAndView.addObject("movingSizes", movingSizes);
         modelAndView.addObject("siteView", siteViewService.getById(1));
+        modelAndView.addObject("hasMore", pagedCompanies.hasNext());
         return modelAndView;
     }
     @PostMapping(value = "/delete_company")

@@ -21,8 +21,8 @@
     </div>
 
     <div class="align-center reg-page">
-        <div class="reg-limit">
-            <div class="label">
+        <div class="form__container">
+            <div class="text-center">
                 <h1>Registration</h1>
             </div>
 
@@ -30,23 +30,24 @@
             <form th:action="@{/register}" method="post" th:object="${user}">
                 <div class="registration">
                     <!-- Username field -->
-                    <div class="reg">
+                    <div class="reg text-center">
                         <label class="form-label" for="form3Example1cg">Login</label>
+                        <br>
                         <input th:field="*{username}" type="text" maxlength="20" autofocus required
                                id="form3Example1cg" class="form-control form-control-lg"/>
                     </div>
 
                     <!-- Email field -->
-                    <div class="reg">
+                    <div class="reg text-center">
                         <label >E-mail <span style="color: red;">*</span></label>
-                        <br><br>
+                        <br>
                         <input th:field="*{email}" type="email" placeholder="example@gmail.com" required/>
                     </div>
 
                     <!-- Password field -->
-                    <div class="reg">
+                    <div class="reg text-center">
                         <label >Password <span style="color: red;">*</span></label>
-                        <br><br>
+                        <br>
                         <input th:field="*{password}" type="password" placeholder="Create password" minlength="8" maxlength="30" required/>
                     </div>
                 </div>
@@ -64,6 +65,7 @@
                 </div>
             </form>
         </div>
+
     </div>
 </main>
 
