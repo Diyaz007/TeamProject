@@ -61,7 +61,7 @@ var service_swiper = new Swiper(".service-types", {
 });
 
 var locations_swiper = new Swiper(".locations", {
-    slidesPerView: 1,
+    slidesPerView: 6,
     spaceBetween: 30,
     loop: true,
     navigation: {
@@ -88,3 +88,22 @@ document.addEventListener("DOMContentLoaded", () => {
         offScreenMenu.classList.toggle("active");
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    let showMoreButton = document.querySelector('.show-more');
+    let hasMore = document.querySelector('.has-more');
+
+
+    if (hasMore.textContent !== 'true') {
+        showMoreButton.style.display = 'none';
+    }
+
+    showMoreButton.addEventListener('click', function () {
+        let url = new URL(window.location.href);
+        let size = parseInt(url.searchParams.get('size') || '6');
+        size += 3
+        url.searchParams.set('size', size);
+        window.location.href = url.toString();
+    });
+});
+

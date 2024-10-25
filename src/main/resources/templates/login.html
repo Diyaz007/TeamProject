@@ -15,21 +15,25 @@
         <div class="alert alert-danger">Invalid username or password!</div>
     </div>
 
+
+
     <div class="align-center reg-page">
-        <div class="reg-limit">
-            <div class="label text-center">
+        <div class="form__container">
+            <div class="text-center">
                 <h1>Login</h1>
             </div>
             <form th:action="@{/login}" class="login-form" method="post">
                 <div class="registration">
-                    <div class="reg text-center">
+                    <div class="log text-center">
                         <label class="form-label" >Username</label>
+                        <br>
                         <label>
                             <input type="text" name="username" required class="form-control form-control-lg"/>
                         </label>
                     </div>
-                    <div class="reg text-center">
+                    <div class="log text-center">
                         <label class="form-label">Password</label>
+                        <br>
                         <label>
                             <input type="password" name="password" required class="form-control form-control-lg"/>
                         </label>
@@ -39,10 +43,11 @@
                 <div class="signup d-flex flex-column text-center">
                     <button type="submit">Login</button>
                     <span>Don't have an account?</span>
-                    <a th:href="@{/register}" style="color: #06965C; margin-bottom: 20%">Sign up here</a>
+                    <a th:href="@{/register}" style="color: #06965C;">Sign up here</a>
                 </div>
             </form>
         </div>
+
     </div>
 </main>
 
