@@ -6,6 +6,8 @@ import com.example.teamproject.entity.Company;
 import com.example.teamproject.entity.Image;
 import com.example.teamproject.entity.Review;
 import com.example.teamproject.entity.Users;
+import com.example.teamproject.exceptions.FileException;
+import com.example.teamproject.exceptions.PhoneNumberException;
 import com.example.teamproject.repositories.CompanyRepository;
 import com.example.teamproject.repositories.ImageRepository;
 import com.example.teamproject.repositories.ReviewRepository;
@@ -20,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Service
 public class CompanyService {
@@ -58,13 +61,22 @@ public class CompanyService {
         return companyRepository.findCompanyByName(name) != null;
     }
 
+    private static final Pattern phone = Pattern.compile(
+            "^\\+(\\d{1,3})( )?\\(\\d{1,4}\\)( )?\\d{3,4}( )?\\d{3,4}$"
+    );
 
-    public void saveCompany(Company company, MultipartFile file) throws IOException {
+    public void saveCompany(Company company, MultipartFile file) throws IOException, FileException, PhoneNumberException {
         Image image;
         if (file.getSize() != 0) {
             image = toImageEntity(file);
             image.setPreviewImage(true);
             company.addImageToCompany(image);
+        }
+        if(!phone.matcher(company.getPhoneNumber()).matches() || company.getPhoneNumber() == null){
+            throw new PhoneNumberException();
+        }
+        if(file.getSize() == 0){
+            throw new FileException();
         }
         Double averageRating = 0.0;
         company.setRating(averageRating);
@@ -103,7 +115,7 @@ public class CompanyService {
     public Company getCompanyById(Long id) {
         return companyRepository.findById(id).orElse(null);
     }
-    public void updateCompany(Long id,Company company, MultipartFile file) throws IOException {
+    public void updateCompany(Long id,Company company, MultipartFile file) throws IOException, PhoneNumberException, FileException {
         Company company1 = companyRepository.findCompanyById(id);
         if (file.getSize() != 0) {
             Image image = toImageEntity(file);
@@ -111,6 +123,12 @@ public class CompanyService {
             company1.getImages().set(0, image);
             company1.addImageToCompany(image);
             imageRepository.save(image);
+        }
+        if(!phone.matcher(company.getPhoneNumber()).matches() || company.getPhoneNumber() == null){
+            throw new PhoneNumberException();
+        }
+        if(file.getSize() == 0){
+            throw new FileException();
         }
         company1.setName(company.getName());
         company1.setPhoneNumber(company.getPhoneNumber());

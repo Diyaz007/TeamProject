@@ -7,6 +7,8 @@ import com.example.teamproject.entity.Users;
 import com.example.teamproject.enums.MovingSize;
 import com.example.teamproject.enums.Roles;
 import com.example.teamproject.enums.States;
+import com.example.teamproject.exceptions.FileException;
+import com.example.teamproject.exceptions.PhoneNumberException;
 import com.example.teamproject.repositories.ImageRepository;
 import com.example.teamproject.services.CompanyService;
 import com.example.teamproject.services.SiteViewService;
@@ -38,13 +40,19 @@ public class CompanyController {
     private SiteViewService siteViewService;
 
     @RequestMapping(value = "/add_company", method = RequestMethod.GET)
-    public ModelAndView addCompany(@RequestParam(value = "error", required = false) Boolean error) {
+    public ModelAndView addCompany(@RequestParam(value = "error", required = false) Boolean error,@RequestParam(value = "number-error", required = false) Boolean numberError,@RequestParam(value = "file-error", required = false) Boolean fileError) {
         ModelAndView modelAndView = new ModelAndView("addCompany");
         ArrayList<States> states = new ArrayList<States>(Arrays.asList(States.values()));
         modelAndView.addObject("company", new Company());
         modelAndView.addObject("states", states);
         if (error != null) {
             modelAndView.addObject("error", "Name is already taken");
+        }
+        if (numberError != null) {
+            modelAndView.addObject("numberError", numberError);
+        }
+        if (fileError != null) {
+            modelAndView.addObject("fileError", fileError);
         }
         return modelAndView;
     }
@@ -61,7 +69,13 @@ public class CompanyController {
             }else {
                 return "redirect:/";
             }
-        }catch (Exception e){
+        }catch (PhoneNumberException e){
+            return "redirect:/add_company?number-error=true";
+        }
+        catch (FileException e){
+            return "redirect:/add_company?file-error=true";
+        }
+        catch (Exception e){
             return "redirect:/add_company?error=true";
         }
     }
@@ -90,7 +104,7 @@ public class CompanyController {
     }
 
     @GetMapping(value = "/updateCompany")
-    public ModelAndView updateCompany(@RequestParam(value = "error", required = false) Boolean error,
+    public ModelAndView updateCompany(@RequestParam(value = "error", required = false) Boolean error,@RequestParam(value = "number-error", required = false) Boolean numberError,@RequestParam(value = "file-error", required = false) Boolean fileError,
                                       @RequestParam(name = "companyId") Long companyId) {
         ArrayList<States> states = new ArrayList<States>(Arrays.asList(States.values()));
         ModelAndView modelAndView = new ModelAndView("updateCompany");
@@ -98,6 +112,12 @@ public class CompanyController {
         modelAndView.addObject("company", companyService.getCompanyById(companyId));
         if (error != null) {
             modelAndView.addObject("error", "Name is already taken");
+        }
+        if (numberError != null) {
+            modelAndView.addObject("numberError", numberError);
+        }
+        if (fileError != null) {
+            modelAndView.addObject("fileError", fileError);
         }
         return modelAndView;
     }
@@ -108,9 +128,14 @@ public class CompanyController {
         try {
             this.companyService.updateCompany(Id,company,file1);
             return "redirect:/";
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return "redirect:/update_company?error=true&companyId=" + Id;
+        } catch (PhoneNumberException e){
+            return "redirect:/add_company?number-error=true";
+        }
+        catch (FileException e){
+            return "redirect:/add_company?file-error=true";
+        }
+        catch (Exception e){
+            return "redirect:/add_company?error=true";
         }
     }
 }

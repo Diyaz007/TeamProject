@@ -27,6 +27,9 @@
         <div class="form-group">
           <label for="company-phone-number">Phone number</label>
           <input th:field="*{phoneNumber}" th:value="${company.getPhoneNumber()}" name="phoneNumber" type="tel" id="company-phone-number" placeholder="+966 (***) *** ***" required>
+          <div  th:if="${numberError} != null">
+            <div class="alert alert-danger">Phone number is empty or incorrect number</div>
+          </div>
         </div>
 
         <div class="form-group" id="address">
@@ -45,6 +48,9 @@
             <label for="company-img">Company logo</label>
             <input th:value="${file1}" type="file" accept="image/jpeg" name="file1" id="company-img" required>
             <input th:value="${company.getId()}" type="number" hidden="hidden" name="companyId"/>
+            <div  th:if="${fileError} != null">
+              <div class="alert alert-danger">file is empty</div>
+            </div>
           </div>
         </div>
         <button type="submit">Update</button>

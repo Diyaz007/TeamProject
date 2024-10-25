@@ -1,6 +1,8 @@
 package com.example.teamproject.services;
 
 import com.example.teamproject.enums.Roles;
+import com.example.teamproject.exceptions.EmailException;
+import com.example.teamproject.exceptions.PasswordException;
 import com.example.teamproject.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -14,6 +16,7 @@ import com.example.teamproject.entity.Users;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Service
 public class UsersService {
@@ -22,7 +25,20 @@ public class UsersService {
 
     private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-    public Users save(Users user) {
+    private static final Pattern rfc2822 = Pattern.compile(
+            "^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$"
+    );
+
+    public Users save(Users user) throws PasswordException, EmailException {
+        if(user.getEmail() == null || !rfc2822.matcher(user.getEmail()).matches()){
+            throw new EmailException();
+        }
+        if(user.getPassword() == null || user.getPassword().length() < 8){
+            throw new PasswordException();
+        }
+        if(user.getUsername() == null){
+            throw new NullPointerException();
+        }
         user.setUsername(user.getUsername());
         user.setEmail(user.getEmail());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
