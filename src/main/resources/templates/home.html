@@ -46,32 +46,40 @@
 
     <section class="statistics">
         <div class="limit">
-            <div class="stat-items flex-between d-flex">
-                <div class="stat-item">
+            <div class="stat-items flex-between d-flex swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="stat-item">
+                            <h3 th:text="${siteView.getLocationsStat()}"></h3>
+                            <p>LOCATIONS</p>
+                            <div class="divider">/</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="stat-item">
+                            <h3 th:text="${siteView.getMovingCompanyStat()}"></h3>
+                            <p>MOVING COMPANIES</p>
+                            <div class="divider">/</div>
+                        </div>
 
-                    <h3 th:text="${siteView.getLocationsStat()}"></h3>
-                    <p>LOCATIONS</p>
-                </div>
-                <div class="divider">/</div>
-                <div class="stat-item">
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="stat-item">
+                            <h3 th:text="${siteView.getReviewsStat()}"></h3>
+                            <p>REVIEWS</p>
+                            <div class="divider">/</div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="stat-item">
+                            <h3 th:text="${siteView.getSatisfiedCustomersStat()}"></h3>
+                            <p>SATISFIED CUSTOMERS</p>
+                        </div>
+                    </div>
 
-                    <h3 th:text="${siteView.getMovingCompanyStat()}"></h3>
-                    <p>MOVING COMPANIESL</p>
-                </div>
-                <div class="divider">/</div>
-                <div class="stat-item">
-
-                    <h3 th:text="${siteView.getReviewsStat()}"></h3>
-                    <p>REVIEWS</p>
-                </div>
-                <div class="divider">/</div>
-                <div class="stat-item">
-
-                    <h3 th:text="${siteView.getSatisfiedCustomersStat()}"></h3>
-                    <p>SATISFIED CUSTOMERS</p>
                 </div>
             </div>
-            <div class="section-divider"></div>
+
         </div>
     </section>
 
@@ -98,7 +106,7 @@
                 <tr th:each="company:${allActiveCompanies}">
                     <div class="company-list-el">
                         <div class="logo align-center d-flex">
-                            <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="auto" width="50%" alt="Company Image">
+                            <img th:src="@{/images/{id}(id=${company.getPreviewImageId()})}" height="150px" width="150px" style="object-fit: contain" alt="Company Image">
                             <div class="rating d-flex ">
                                 <h3 th:text="${company.getName()}"></h3>
                                 <span th:text="${company.getRating()}"></span>

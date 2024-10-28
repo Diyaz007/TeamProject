@@ -1,3 +1,18 @@
+var location_swiper = new Swiper(".stat-items", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    breakpoints: {
+        768: {
+            slidesPerView: 2,
+        },
+
+        1100: {
+            slidesPerView: 4,
+        },
+    },
+});
+
 var review_swiper = new Swiper(".review-container", {
     slidesPerView:1,
     spaceBetween: 30,
@@ -61,7 +76,7 @@ var service_swiper = new Swiper(".service-types", {
 });
 
 var locations_swiper = new Swiper(".locations", {
-    slidesPerView: 6,
+    slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
     navigation: {

@@ -5,7 +5,7 @@
         <div class="d-flex header-top info">
           <p>Best American Moving Companies</p>
           <div th:if="${#authorization.expression('isAuthenticated()')}">
-            <p>WELCOME, <span th:text="${#authentication.name}" class="user__greeting">User</span>!</p>
+            <p>WELCOME<span th:text="${#authentication.name}" class="user__greeting">, User</span>!</p>
           </div>
           <div class="contact">
             <p class="questions">Any questions?</p>
