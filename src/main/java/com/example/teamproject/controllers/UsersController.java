@@ -16,14 +16,13 @@ public class UsersController {
     @Autowired
     private UsersService userService;
 
-    @GetMapping(value = "/")
-    public String home() {
-        return "redirect:/get_all_companies";
-    }
-
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public ModelAndView login(@RequestParam(value = "notFound", required = false) Boolean notFoundError) {
+        ModelAndView modelAndView = new ModelAndView("login");
+        if (notFoundError != null) {
+            modelAndView.addObject("notFoundError", notFoundError);
+        }
+        return modelAndView;
     }
 
 

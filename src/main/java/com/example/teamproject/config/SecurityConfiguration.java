@@ -61,7 +61,7 @@ public class SecurityConfiguration{
                 .formLogin(form -> form
                         .loginPage("/login")
                         .successHandler(customizeAuthenticationSuccessHandler)
-                        .failureUrl("/login?error=true")
+                        .failureUrl("/login?notFound=true")
                         .usernameParameter("username")
                         .passwordParameter("password")
                         .permitAll()

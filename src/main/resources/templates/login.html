@@ -10,17 +10,13 @@
 <header th:insert="~{blocks/header :: header}"></header>
 
 <main>
-    <!-- Сообщение об ошибке, если неверные данные -->
-    <div hidden th:if="${param.error}">
-        <div class="alert alert-danger">Invalid username or password!</div>
-    </div>
-
-
-
     <div class="align-center reg-page">
         <div class="form__container">
             <div class="text-center">
                 <h1>Login</h1>
+            </div>
+            <div  th:if="${notFoundError} != null">
+                <div class="alert alert-danger">User not found!</div>
             </div>
             <form th:action="@{/login}" class="login-form" method="post">
                 <div class="registration">

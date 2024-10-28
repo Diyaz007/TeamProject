@@ -86,7 +86,7 @@ public class CompanyController {
         return user;
     }
 
-    @RequestMapping(value = "/get_all_companies", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView getAllCompanies(@RequestParam(value = "page", defaultValue = "0") int page,
                                         @RequestParam(value = "size", defaultValue = "6") int size) {
         ModelAndView modelAndView = new ModelAndView("home");
