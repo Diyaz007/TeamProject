@@ -582,6 +582,7 @@ a.login, a.logout{
         background-color: #EBFAFD;
         flex-direction: column;
         align-items: center;
+        justify-content: flex-end;
     }
 
     .service-type img {
@@ -631,9 +632,6 @@ a.login, a.logout{
     section.reviews {
         margin-top: 3%;
     }
-
-
-
 
     .review-label {
         gap: 5%;
@@ -691,7 +689,7 @@ a.login, a.logout{
     .card {
         background-color: #F9F9F9;
         border-radius: 0.5rem;
-        padding: 1.5%;
+        padding: 4.5%;
         margin: 10px 0;
     }
 
@@ -1476,6 +1474,7 @@ a.login, a.logout{
 }
 
 .quote-form {
+    justify-content: center;
     max-width: 100%;
     flex-wrap: wrap;
     text-align: start;
@@ -1495,7 +1494,7 @@ a.login, a.logout{
 }
 
 .form-group input, .choose-state {
-    width: 190%;
+    width: 100%;
     padding: 7%;
     font-size: 0.875rem;
     border: 1px solid #ccc;
@@ -1516,9 +1515,7 @@ textarea {
     margin: 5% 0;
 }
 
-#address {
-    margin-left: 25%;
-}
+
 
 .img-selecter input[type="file"] {
     background-color: white;
@@ -1557,5 +1554,11 @@ textarea {
     border-radius: 0.3rem;
     font-size: 1rem;
     cursor: pointer;
-    margin-left: 39%;
+}
+
+@media (max-width: 760px){
+    #updateButton {
+        margin-right: 30%;
+        min-width: 40%;
+    }
 }

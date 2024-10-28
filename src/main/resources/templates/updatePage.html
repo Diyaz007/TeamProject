@@ -35,57 +35,53 @@
 
                     <!-- Email field -->
                     <div class="reg">
-                        <label>Locations <span style="color: red;">*</span></label>
-                        <br><br>
+                        <label>Locations <span style="color: red;">*</span></label>''
                         <input th:field="*{locationsStat}" th:value="${siteView.getLocationsStat()}" required/>
                     </div>
 
                     <!-- Password field -->
                     <div class="reg">
                         <label>Moving Company <span style="color: red;">*</span></label>
-                        <br><br>
                         <input th:field="*{movingCompanyStat}" th:value="${siteView.getMovingCompanyStat()}"
                                maxlength="10" required/>
                     </div>
 
                     <div class="reg">
                         <label>Reviews <span style="color: red;">*</span></label>
-                        <br><br>
                         <input th:field="*{reviewsStat}" th:value="${siteView.getReviewsStat()}" maxlength="8"
                                required/>
                     </div>
 
                     <div class="reg">
                         <label>Satisfied Customers <span style="color: red;">*</span></label>
-                        <br><br>
                         <input th:field="*{satisfiedCustomersStat}" th:value="${siteView.getSatisfiedCustomersStat()}"
                                maxlength="10" type="text" required/>
                     </div>
 
                     <div class="reg">
                         <label>Moving Tips & Tricks 1! <span style="color: red;">*</span></label>
-                        <br><br>
+
                         <input th:field="*{movingTipsAndTricks1}" th:value="${siteView.getMovingTipsAndTricks1()}"
                                maxlength="200" type="text" required/>
                     </div>
 
                     <div class="reg">
                         <label>Moving Tips & Tricks 2! <span style="color: red;">*</span></label>
-                        <br><br>
+
                         <input th:field="*{movingTipsAndTricks2}" th:value="${siteView.getMovingTipsAndTricks2()}"
                                maxlength="200" type="text" required/>
                     </div>
 
                     <div class="reg">
                         <label>Moving Companies Ratings and Reviews <span style="color: red;">*</span></label>
-                        <br><br>
+
                         <input th:field="*{movingCompaniesRatingsAndReviews}"
                                th:value="${siteView.getMovingCompaniesRatingsAndReviews()}" type="text" required/>
                     </div>
 
                     <div class="reg">
                         <label>What is a Moving Service <span style="color: red;">*</span></label>
-                        <br><br>
+
                         <input th:field="*{whatIsAMovingService}" th:value="${siteView.getWhatIsAMovingService()}"
                                required/>
                     </div>
